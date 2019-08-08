@@ -24,6 +24,7 @@ export class BuscarItemsComponent implements OnInit {
 
 
   mostrar() {
+    this.items = [];
     this.itemService.getAll(this.buscar)
       .subscribe(data => {
         let aux: Array<any> = data.results;
