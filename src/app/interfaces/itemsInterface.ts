@@ -1,6 +1,6 @@
 export interface itemsInterface {
      itemName : string;
-     itemImg : any;
-     sellerId : number;
+     itemImg : string;
+     sellerName : string;
      itemCost : number;
 }

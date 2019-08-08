@@ -2,40 +2,45 @@ import { Component, OnInit } from '@angular/core';
 import { ItemsService } from '../services/items.service';
 import { UserService } from '../services/user.service';
 import { async } from '@angular/core/testing';
+import { itemsInterface } from '../interfaces/itemsInterface';
 
 @Component({
   selector: 'app-buscar-items',
   templateUrl: './buscar-items.component.html',
   styleUrls: ['./buscar-items.component.css']
 })
-export class BuscarItemsComponent implements OnInit{
+export class BuscarItemsComponent implements OnInit {
 
-items: Array<any>;
-seller : any;
+  private items: Array<itemsInterface> = [];
 
-buscar : string;
+  seller: any;
 
-  constructor(private itemService : ItemsService, private userService: UserService) { }
+  buscar: string;
+
+  constructor(private itemService: ItemsService, private userService: UserService) { }
 
   ngOnInit() {
-}
-
-  
-  mostrar() {
-    this.itemService.getAll(this.buscar)
-    .subscribe(data => {
-    this.items = data.results; 
-  })
-
- /*this.userService.getSeller(this.items[0].seller.id.toString())
-  .subscribe(data => {
-    this.seller = data.nickname;
-    console.log(this.seller);
-  })*/
-    
   }
 
-  
-  
-  
+
+  mostrar() {
+    this.itemService.getAll(this.buscar)
+      .subscribe(data => {
+        let aux: Array<any> = data.results;
+        aux.forEach((itemTemp) => {
+          this.userService.getSeller(itemTemp.seller.id.toString())
+            .subscribe(data => {
+              let item: itemsInterface = {
+                itemName: itemTemp.title,
+                itemImg: itemTemp.thumbnail,
+                sellerName: data.nickname,
+                itemCost: itemTemp.price
+
+              };
+              this.items.push(item);
+              console.log(this.items);
+            })
+        })
+      });
+  }
 }
