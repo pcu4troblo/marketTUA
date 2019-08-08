@@ -16,9 +16,10 @@
         <div class="col s4"  *ngFor="let item of items">
             <div class="card">
                 <div class="card-content">
-                   <span class="card-title">ID: {{item.id}}</span>
-                   <span>Item:</span> {{item.title}}
-                   <span>{{seller}}</span>
+                   <span class="card-title">ID: {{item.itemName}}</span>
+                   <span>Item:</span> {{item.itemCost}}
+                   <span>{{item.sellerName}}</span>
+                   <img src="{{item.itemImg}}" alt="">
                 </div>
             </div>
         </div>
