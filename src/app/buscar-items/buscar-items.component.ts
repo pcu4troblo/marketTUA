@@ -11,7 +11,7 @@ import { itemsInterface } from '../interfaces/itemsInterface';
 })
 export class BuscarItemsComponent implements OnInit {
 
-  private items: Array<itemsInterface> = [];
+  items: Array<itemsInterface> = [];
 
   seller: any;
 
