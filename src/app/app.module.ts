@@ -11,8 +11,7 @@ import { DetalleItemComponent } from './components/detalle-item/detalle-item.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CarritoComponent } from './components/home/carrito/carrito.component';
 import { FiltroComponent } from './components/home/filtro/filtro.component';
-import { ContenidoComponent } from './components/home/contenido/contenido.component'
-
+import { ContenidoComponent } from './components/home/contenido/contenido.component';
 
 @NgModule({
   declarations: [
