@@ -1,53 +1,8 @@
-<div class="section">
-
-  <div class="row">
-    <h3>Mercado Libre - Juan Pablo Rios Arenas</h3>
+<div class="row">
+  <div class="col l9">
+    <app-contenido></app-contenido>
   </div>
-    
-    <div class="row">
-        <form #filtro="ngForm">
-        <div class="col s8">
-          <input type="text" name="filtro" placeholder="Ingrese Busqueda" name="busqueda" [(ngModel)]="buscar"> 
-          
-        </div>
-        <div class="col s3">
-                <a class="waves-effect blue darken-4 btn" (click)="mostrar()">Buscar</a>
-        </div>
-        </form>
-    </div>
-    <!--<div>
-           <table>
-                    <thead>
-                      <tr>
-                          <th></th>
-                          <th>Item</th>
-                          <th>Vendedor</th>
-                          <th>Precio</th>
-                          
-                      </tr>
-                    </thead>
-            
-                    <tbody>
-                      <tr *ngFor="let item of items">
-                        <td><img src="{{item.itemImg}}" alt=""></td>
-                        <td>{{item.itemName}}</td>
-                        <td>{{item.sellerName}}</td>
-                        <td>${{item.itemCost}}</td>
-                      </tr>
-                    </tbody>
-          </table>
-    </div>
-</div>-->
-<div class="row" >
-
-  <div class="col s4"  *ngFor="let item of items">
-      <div class="card small">
-          <div class="card-content">
-             <span class="card-title">{{item.itemName}}</span>
-             <img src="{{item.itemImg}}" alt=""><br>
-             <span class="blue-text text-darken-2">{{item.itemCost | currency:"COP":"symbol-narrow"}}</span><br>
-             {{item.sellerName}}
-          </div>
-      </div>
+  <div class="col l3">
+    <app-carrito></app-carrito>
   </div>
-  </div>
+</div>
