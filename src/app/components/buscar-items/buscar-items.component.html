@@ -1,4 +1,4 @@
-<div class="container section">
+<div class="section">
 
   <div class="row">
     <h3>Mercado Libre - Juan Pablo Rios Arenas</h3>
@@ -45,7 +45,7 @@
           <div class="card-content">
              <span class="card-title">{{item.itemName}}</span>
              <img src="{{item.itemImg}}" alt=""><br>
-             <span class="blue-text text-darken-2">${{item.itemCost}}</span><br>
+             <span class="blue-text text-darken-2">{{item.itemCost | currency:"COP":"symbol-narrow"}}</span><br>
              {{item.sellerName}}
           </div>
       </div>

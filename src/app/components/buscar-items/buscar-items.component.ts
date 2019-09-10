@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemsService } from '../services/items.service';
-import { UserService } from '../services/user.service';
+import { ItemsService } from '../../services/items.service';
+import { UserService } from '../../services/user.service';
 import { async } from '@angular/core/testing';
-import { itemsInterface } from '../interfaces/itemsInterface';
+import { itemsInterface } from '../../interfaces/itemsInterface';
 
 @Component({
   selector: 'app-buscar-items',
@@ -39,7 +39,7 @@ export class BuscarItemsComponent implements OnInit {
 
               };
               this.items.push(item);
-              console.log(this.items);
+           
             })
         })
       });
