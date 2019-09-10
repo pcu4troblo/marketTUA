@@ -1,5 +1,5 @@
 {
-  "name": "markeTUA",
+  "name": "lista-items",
   "version": "0.0.0",
   "scripts": {
     "postinstall": "ng build --aot --prod",
