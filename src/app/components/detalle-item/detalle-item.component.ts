@@ -22,7 +22,8 @@ export class DetalleItemComponent implements OnInit {
     this.itemService.getItemById(id).subscribe(data => {
        this.item = data;
        console.log(this.item);
-    })
+    });
+    this.carrito = JSON.parse( localStorage.getItem("carrito" ));
   }
   agregarCarrito(){
     let itemCarrito:CarritoInterface = {
@@ -30,6 +31,7 @@ export class DetalleItemComponent implements OnInit {
       cost : this.item.price
     }
     this.carrito.push(itemCarrito);
+    localStorage.setItem("carrito" , JSON.stringify(this.carrito));
   }
 
 }
