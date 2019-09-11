@@ -6,7 +6,7 @@
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <p>{{item.descriptions[0].id}}</p>
+         
           <p><span class="blue-text text-darken-2">{{item.price | currency:"COP":"symbol-narrow"}}</span></p>
           <!--<p>{{item.brand}}</p>
           <p>{{item.images}}</p>
@@ -15,11 +15,11 @@
           <p>{{item.soldunits}}</p>-->
         </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
+          <a id="agregaCarrito" (click)="agregarCarrito()">Agregar al carrito</a>
         </div>
       </div>
     </div>
   </div>
   <div class="col l2">
-    <app-carrito></app-carrito>
+    <app-carrito [itemsCarrito]="carrito"></app-carrito>
   </div>
