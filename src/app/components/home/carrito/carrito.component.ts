@@ -22,7 +22,11 @@ export class CarritoComponent implements OnInit {
       })}
       }
 
- 
+  remove(item: any){
+  this.itemsCarrito.splice(this.itemsCarrito.indexOf(item), 1);
+  console.log(this.itemsCarrito);
+  localStorage.setItem("carrito", JSON.stringify(this.itemsCarrito));
+  }
     
   }
 
