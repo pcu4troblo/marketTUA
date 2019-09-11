@@ -26,6 +26,7 @@
           <img src="{{item.itemImg}}" alt=""><br>
           <span class="blue-text text-darken-2">{{item.itemCost | currency:"COP":"symbol-narrow"}}</span><br>
           {{item.sellerName}}
+          <button class="btn btn-primary" (click) = "onSelected(item)" >Detalles</button>
         </div>
       </div>
     </div>

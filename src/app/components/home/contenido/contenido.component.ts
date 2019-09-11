@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
 import { UserService } from 'src/app/services/user.service';
 import { itemsInterface } from 'src/app/interfaces/itemsInterface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contenido',
@@ -11,12 +12,12 @@ import { itemsInterface } from 'src/app/interfaces/itemsInterface';
 export class ContenidoComponent implements OnInit {
 
   items: Array<itemsInterface> = [];
-
+  
   seller: any;
 
   buscar: string;
 
-  constructor(private itemService: ItemsService, private userService: UserService) { }
+  constructor(private itemService: ItemsService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -34,13 +35,16 @@ export class ContenidoComponent implements OnInit {
                 itemName: itemTemp.title,
                 itemImg: itemTemp.thumbnail,
                 sellerName: data.nickname,
-                itemCost: itemTemp.price
-
+                itemCost: itemTemp.price,
+                itemId: itemTemp.id
               };
               this.items.push(item);
            
             })
         })
       });
+  }
+  onSelected(item: itemsInterface){
+    this.router.navigateByUrl("/" + item.itemId);
   }
 }
