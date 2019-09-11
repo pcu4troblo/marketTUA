@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarritoInterface } from 'src/app/interfaces/carrito-interface';
 
 
 @Component({
@@ -8,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscarItemsComponent implements OnInit {
 
-  
+  carrito : Array<CarritoInterface> = [];
 
   constructor() { }
 
   ngOnInit() {
+    this.carrito = JSON.parse( localStorage.getItem("carrito" ));
   }
 
 

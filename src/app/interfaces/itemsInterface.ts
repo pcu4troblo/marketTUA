@@ -3,4 +3,5 @@ export interface itemsInterface {
      itemImg : string;
      sellerName : string;
      itemCost : number;
+     itemId : string;
 }

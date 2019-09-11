@@ -6,10 +6,16 @@ import { BuscarItemsComponent } from './components/buscar-items/buscar-items.com
 
 const routes: Routes = [
   {
-  path: "item", component: DetalleItemComponent
+  path: "item", 
+  component: DetalleItemComponent
   },
   {
-  path: "", component: BuscarItemsComponent
+  path: "", 
+  component: BuscarItemsComponent
+  },
+  {
+  path: "detalles/:id",
+  component: DetalleItemComponent
   }
 ];
 

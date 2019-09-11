@@ -9,22 +9,19 @@ import { CarritoInterface } from 'src/app/interfaces/carrito-interface';
 export class CarritoComponent implements OnInit {
 
   @Input() itemsCarrito: Array<CarritoInterface>;
-
- /* aux: Array<any> = [
-    {
-      'item': "Camara",
-      'precio' : 200000
-    },
-    {
-      'item': "Mouse",
-      'precio' : 100000
-    }
-  ]*/
+  
+  suma: number = 0;
 
   constructor() { }
 
   ngOnInit() {
     
+      this.itemsCarrito.forEach(item => {
+      this.suma = this.suma + item.cost;
+      })
+    
   }
+
+
 
 }
