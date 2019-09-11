@@ -11,7 +11,7 @@
       <tr *ngFor="let item of itemsCarrito">
         <td id="item">{{item.item}}</td>
         <td>{{item.cost}}</td>
-        <td>{{item.cost}}</td>
+        <td><a class="btn alert" (click)="remove()">Remove</a></td>
       </tr>
     </tbody>
   </table>
