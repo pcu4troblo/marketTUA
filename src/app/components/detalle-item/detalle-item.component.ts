@@ -30,7 +30,9 @@ export class DetalleItemComponent implements OnInit {
   agregarCarrito(){
     let itemCarrito:CarritoInterface = {
       item : this.item.title,
-      cost : this.item.price
+      cost : this.item.price,
+      id : this.item.id,
+      img : this.item.thumbnail
     }
     this.carrito.push(itemCarrito);
     localStorage.setItem("carrito" , JSON.stringify(this.carrito));
