@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
-import { UserService } from 'src/app/services/user.service';
-import { itemsInterface } from 'src/app/interfaces/itemsInterface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,42 +9,29 @@ import { Router } from '@angular/router';
 })
 export class ContenidoComponent implements OnInit {
 
-  items: Array<itemsInterface> = [];
+  items: Array<any> = [];
   
   seller: any;
 
   buscar: string;
 
-  constructor(private itemService: ItemsService, private userService: UserService, private router: Router) { }
+  constructor(private itemService: ItemsService, private router: Router) { }
 
   ngOnInit() {
-      this.mostrar();
- 
+      
+   this.mostrar()
     }
     
   mostrar() {
-    console.log(this.buscar);
     this.items = [];
     this.itemService.getAll(this.buscar)
       .subscribe(data => {
-        let aux: Array<any> = data.results;
-        aux.forEach((itemTemp) => {
-          this.userService.getSeller(itemTemp.seller.id.toString())
-            .subscribe(data => {
-              let item: itemsInterface = {
-                itemName: itemTemp.title,
-                itemImg: itemTemp.thumbnail,
-                sellerName: data.nickname,
-                itemCost: itemTemp.price,
-                itemId: itemTemp.id
-              };
-              this.items.push(item);
-           
+              this.items = data.products;
+              console.log(this.items);
             })
-        })
-      });
   }
-  onSelected(item: itemsInterface){
-    this.router.navigateByUrl("/detalles/" + item.itemId);
+
+  onSelected(item: any){
+    this.router.navigateByUrl("/items/" + item.id);
   }
 }

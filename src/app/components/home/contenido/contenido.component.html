@@ -17,10 +17,10 @@
     <div class="row">
       <div class="column" *ngFor="let item of items">
         <div class="card text-white bg-primary" style="width: 18rem;">
-          <img src="{{item.itemImg}}" class="card-img-top" alt="...">
+          <img src="{{item.thumbnail}}" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-title text-white"><a id="detalle" (click) = "onSelected(item)">{{item.itemName}}</a></p>
-            <p class="card-text">{{item.itemCost | currency:"COP":"symbol-narrow"}}</p><br>
+            <p class="card-title text-white"><a id="detalle" (click) = "onSelected(item)">{{item.name}}</a></p>
+            <p class="card-text">{{item.price | currency:"COP":"symbol-narrow"}}</p><br>
             <button type="button" class="btn btn-dark" (click)="onSelected(item)" >Detalles</button>
           </div>
         </div>
