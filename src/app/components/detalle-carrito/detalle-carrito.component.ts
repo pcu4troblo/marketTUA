@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class DetalleCarritoComponent implements OnInit {
 
   carrito : Array<CarritoInterface> = [];
-  carro : any = [] ;
+  
   
   constructor(private router: Router) { }
 
