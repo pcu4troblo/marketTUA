@@ -1,33 +1,31 @@
-<div class="section">
 
-  <div class="row">
-
+<div class="container">
+  <div class="section">
+  <div class="row">  
+    <div class="col-md-2">
+      <form #filtro="ngForm">
+        <div class="form-group">
+          <input class="form-control mr-sm-2 bg-dark text-white" name="buscar" type="search"  placeholder="Buscar" aria-label="Search" [(ngModel)]="buscar">
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-dark" (click)="mostrar()" >Buscar</button>
+        </div>
+      </form>
+    </div>
   </div>
 
-  <div class="row">
-    <form #filtro="ngForm">
-      <div class="col s8">
-        <input type="text" id="filtro" name="filtro" placeholder="Ingrese Busqueda" name="busqueda"
-          [(ngModel)]="buscar">
-
-      </div>
-      <div class="col s3">
-        <a (click)="mostrar()"><i class="fas fa-search"></i></a>
-      </div>
-    </form>
-  </div>
-
-  <div class="row">
-
-    <div class="col s4" *ngFor="let item of items">
-      <div class="card small">
-        <div class="card-content">
-          <span class="card-title"><a id="detalle" (click) = "onSelected(item)">{{item.itemName}}</a></span>
-          <img src="{{item.itemImg}}" alt=""><br>
-          <span class="blue-text text-darken-2">{{item.itemCost | currency:"COP":"symbol-narrow"}}</span><br>
-          {{item.sellerName}}
-          
+    <div class="row">
+      <div class="column" *ngFor="let item of items">
+        <div class="card" style="width: 18rem;">
+          <img src="{{item.itemImg}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-title text-primary"><a id="detalle" (click) = "onSelected(item)">{{item.itemName}}</a></p>
+            <p class="card-text">{{item.itemCost | currency:"COP":"symbol-narrow"}}</p><br>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+</div>
+
+
+

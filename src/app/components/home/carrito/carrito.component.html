@@ -1,25 +1,23 @@
-<div class="section">
-  <div class="pestaña" (click)="tablaOn=!tablaOn">
-    <span>Carrito</span>
-    <i class="fas fa-shopping-cart"></i>
-  </div>
-  <table *ngIf="tablaOn" class="responsive">
+
+<div class="carrito">
+  <h3 (click)="!tablaOn">Carrito</h3>
+  <table *ngIf="tablaOn" class="table table-dark ">
     <thead>
       <tr>
-        <th>Item</th>
-        <th>Costo</th>
+        <th scope="col">Item</th>
+        <th scope="col">Costo</th>
       </tr>
     </thead>
-
     <tbody>
-      <tr *ngFor="let item of itemsCarrito">
-        <td id="item">{{item.item}}</td>
-        <td>{{item.cost | currency:"COP":"symbol-narrow"}}</td>
-        <td><a (click)="remove(item)"><i class="far fa-trash-alt"></i></a></td>
+
+      <tr *ngFor="let item of itemsCarrito" class="table-active">
+        <th id="item" scope="col">{{item.item}}</th>
+        <th scope="col">{{item.cost | currency:"COP":"symbol-narrow"}}</th>
+        <td><a class="btn alert" (click)="remove(item)">Remove</a></td>
       </tr>
     </tbody>
-  </table>
-  <table *ngIf="tablaOn" class="responsive">
+  </table> 
+  <table class="table table-dark ">
     <thead>
       <tr>
         <th>Total</th>
@@ -28,3 +26,4 @@
     </thead>
   </table>
 </div>
+
