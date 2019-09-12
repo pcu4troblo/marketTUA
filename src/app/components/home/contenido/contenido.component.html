@@ -8,20 +8,20 @@
           <input class="form-control mr-sm-2 bg-dark text-white" name="buscar" type="search"  placeholder="Buscar" aria-label="Search" [(ngModel)]="buscar">
         </div>
         <div class="form-group">
-          <button type="button" class="btn btn-dark" (click)="mostrar()" >Buscar</button>
+          <button type="button" class="btn btn-dark" id= 'buscar' (click)="mostrar()" >Buscar</button>
         </div>
       </form>
     </div>
   </div>
 
     <div class="row">
-      <div class="column" *ngFor="let item of items">
-        <div class="card text-white bg-primary" style="width: 18rem;">
+      <div class="column"  *ngFor="let item of items">
+        <div class="card text-white bg-primary"  style="width: 18rem;">
           <img src="{{item.itemImg}}" class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-title text-white"><a id="detalle" (click) = "onSelected(item)">{{item.itemName}}</a></p>
             <p class="card-text">{{item.itemCost | currency:"COP":"symbol-narrow"}}</p><br>
-            <button type="button" class="btn btn-dark" (click)="onSelected(item)" >Detalles</button>
+            <button type="button" class="btn btn-dark" id= 'select' (click)="onSelected(item)" >Detalles</button>
           </div>
         </div>
       </div>
