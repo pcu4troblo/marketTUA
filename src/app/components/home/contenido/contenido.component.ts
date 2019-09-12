@@ -20,10 +20,12 @@ export class ContenidoComponent implements OnInit {
   constructor(private itemService: ItemsService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-  }
-
-
+      this.mostrar();
+ 
+    }
+    
   mostrar() {
+    console.log(this.buscar);
     this.items = [];
     this.itemService.getAll(this.buscar)
       .subscribe(data => {

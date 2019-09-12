@@ -6,6 +6,7 @@ import { CarritoInterface } from 'src/app/interfaces/carrito-interface';
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css']
 })
+
 export class CarritoComponent implements OnInit {
 
   @Input() itemsCarrito: Array<CarritoInterface>;
@@ -15,13 +16,20 @@ export class CarritoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
-      this.itemsCarrito.forEach(item => {
+    if(this.itemsCarrito){
+    this.itemsCarrito.forEach(item => {
       this.suma = this.suma + item.cost;
-      })
+      })}
+      }
+
+  remove(item: any){
+  this.itemsCarrito.splice(this.itemsCarrito.indexOf(item), 1);
+  console.log(this.itemsCarrito);
+  localStorage.setItem("carrito", JSON.stringify(this.itemsCarrito));
+  }
     
   }
 
 
 
-}
+

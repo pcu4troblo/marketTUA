@@ -1,26 +1,22 @@
 
-<div class="col s10 m10 l8">
-    <h2 class="header">{{item.title}}</h2>
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="{{item.thumbnail}}">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-         
-          <p><span class="blue-text text-darken-2">{{item.price | currency:"COP":"symbol-narrow"}}</span></p>
-          <!--<p>{{item.brand}}</p>
-          <p>{{item.images}}</p>
-          <p>{{item.rating}}</p>
-          <p>{{item.category.category_name}}</p>
-          <p>{{item.soldunits}}</p>-->
-        </div>
-        <div class="card-action">
-          <a id="agregaCarrito" (click)="agregarCarrito()">Agregar al carrito</a>
-        </div>
-      </div>
+  <div class="card" style="width: 40rem;">
+    <img src="{{item.thumbnail}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h3 class="card-title-primary ">{{item.title}}</h3>
+      <p class="card-text-primary ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    <ul class="list-group list-group-flush text-primary ml-center">
+      <li class="list-group-item">Precio: {{item.price | currency:"COP":"symbol-narrow"}}</li>
+      <li class="list-group-item">Unidades Vendidas: {{item.sold_quantity}}</li>
+      <li class="list-group-item">Categoria: {{item.category_id}}</li>
+    </ul>
+    <div class="card-action">
+     <h3><span class="badge badge-pill badge-success"> <a id="agregaCarrito" (click)="agregarCarrito()">Agregar al carrito</a></span></h3> 
     </div>
   </div>
-  <div class="col l4">
+
+  <div class="col-md-8">
     <app-carrito [itemsCarrito]="carrito"></app-carrito>
   </div>
+
+  

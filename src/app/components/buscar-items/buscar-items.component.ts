@@ -11,12 +11,13 @@ export class BuscarItemsComponent implements OnInit {
 
   carrito : Array<CarritoInterface> = [];
 
-  constructor() { }
-
+  constructor() { 
+     
+  }
+  
   ngOnInit() {
-    this.carrito = JSON.parse( localStorage.getItem("carrito" ));
+    if(JSON.parse( localStorage.getItem("carrito")))
+    this.carrito = JSON.parse( localStorage.getItem("carrito"));
   }
 
-
-  
 }
