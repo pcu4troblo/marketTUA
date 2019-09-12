@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DetalleItemComponent implements OnInit {
 
   tablaOn :boolean;
-  item : any = [];
+  item : any = {};
   carrito : Array<CarritoInterface> = [];
   suma: number = 0;
 
