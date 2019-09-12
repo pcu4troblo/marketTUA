@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="section">
   <div class="row">  
@@ -15,11 +16,12 @@
 
     <div class="row">
       <div class="column" *ngFor="let item of items">
-        <div class="card" style="width: 18rem;">
+        <div class="card text-white bg-primary" style="width: 18rem;">
           <img src="{{item.itemImg}}" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-title text-primary"><a id="detalle" (click) = "onSelected(item)">{{item.itemName}}</a></p>
+            <p class="card-title text-white"><a id="detalle" (click) = "onSelected(item)">{{item.itemName}}</a></p>
             <p class="card-text">{{item.itemCost | currency:"COP":"symbol-narrow"}}</p><br>
+            <button type="button" class="btn btn-dark" (click)="onSelected(item)" >Detalles</button>
           </div>
         </div>
       </div>

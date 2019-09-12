@@ -1,3 +1,8 @@
 #agregaCarrito{
     cursor: pointer;
 }
+
+.carrito{
+    position: relative;
+    top: 70px;
+}

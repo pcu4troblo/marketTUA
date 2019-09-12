@@ -1,3 +1,40 @@
 #item{
     font-size: 1.5ch;
 }
+
+.section{
+    top: 100px;
+    
+}
+
+.pestaña{
+   text-align: center;
+   cursor: pointer;
+   flex-direction: row;
+   justify-content: space-evenly;
+   border-color: black;
+   border: solid;
+   padding: 15px;
+}
+
+.pestaña span{
+    font-family: serif;
+    font-size: 3ch;
+}
+
+.fas{
+    font-size: 20px;
+    color: rgb(14, 42, 146);
+    cursor: pointer;
+    position: relative;
+    left: 5px;
+}
+
+.far{
+    font-size: 20px;
+    color: rgb(14, 42, 146);
+    cursor: pointer;
+    position: relative;
+    left: 20px;
+}
+

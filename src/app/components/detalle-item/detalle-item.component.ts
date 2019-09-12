@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DetalleItemComponent implements OnInit {
 
-  
+  tablaOn :boolean = false;
   item : any = [];
   carrito : Array<CarritoInterface> = [];
   suma: number = 0;
@@ -34,6 +34,7 @@ export class DetalleItemComponent implements OnInit {
     }
     this.carrito.push(itemCarrito);
     localStorage.setItem("carrito" , JSON.stringify(this.carrito));
+    this.tablaOn = true;
   }
 
 }
