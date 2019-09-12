@@ -22,7 +22,6 @@ export class CarritoComponent implements OnInit {
       this.suma = this.suma + item.cost;
       })}
       console.log(this.itemsCarrito);
-      
       }
 
   remove(item: any){

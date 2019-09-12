@@ -2,7 +2,13 @@
     cursor: pointer;
 }
 
+.card-action{
+    padding-top: 5px;
+    text-align: center;
+}
+
 .carrito{
     position: relative;
     top: 70px;
 }
+
