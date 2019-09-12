@@ -3,14 +3,18 @@
     <div class="section">
       <div class="row">
         <div class="column" *ngFor="let item of carrito">
-          <div class="card text-white bg-primary" style="width: 18rem;">
-             <img src="{{item.img}}" class="card-img-top" alt="..." height="320" width="100">
-            <div class="card-body">
-              <p class="card-title text-white"><a id="detalle" (click) = "onSelected(item)">{{item.item}}</a></p>
-              <p class="card-text ">{{item.Cost | currency:"COP":"symbol-narrow"}}</p><br>
-              <button type="button" class="btn btn-dark" (click)="onSelected(item)" >Detalles</button>
+            <div class="card border-primary mb-3 contenido" style="max-width: 300px; max-height: 300px;">
+                <div class="card-body">
+                <h5 class="card-title">{{item.item}}</h5>
+                <div class="card-body">
+                  <img src="{{item.img}}"  alt="..." style="width: 50%; height: 50%;">
+                  <p class="card-text precio" style="padding-top: 15px">{{item.Cost | currency:"COP":"symbol-narrow"}}</p><br>
+                  <div class="card-footer">
+                  <a type="button" class="card-link" (click)="onSelected(item)" >Detalles>></a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
