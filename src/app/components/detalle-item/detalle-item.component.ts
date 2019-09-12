@@ -23,6 +23,7 @@ export class DetalleItemComponent implements OnInit {
     this.itemService.getItemById(id).subscribe(data => {
        this.item = data;
        console.log(this.item);
+       
     });
 
     if(JSON.parse( localStorage.getItem("carrito")))
@@ -31,7 +32,9 @@ export class DetalleItemComponent implements OnInit {
   agregarCarrito(){
     let itemCarrito:CarritoInterface = {
       item : this.item.title,
-      cost : this.item.price
+      cost : this.item.price,
+      id : this.item.id,
+      img : this.item.pictures[0].url
     }
     this.carrito.push(itemCarrito);
     localStorage.setItem("carrito" , JSON.stringify(this.carrito));
