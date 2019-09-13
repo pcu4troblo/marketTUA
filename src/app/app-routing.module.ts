@@ -14,7 +14,7 @@ const routes: Routes = [
   component: BuscarItemsComponent
   },
   {
-  path: "detalles/:id",
+  path: "items/:id",
   component: DetalleItemComponent
   },
   {
