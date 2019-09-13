@@ -14,6 +14,7 @@ export class DetalleItemComponent implements OnInit {
   item : any = {};
   carrito : Array<CarritoInterface> = [];
   suma: number = 0;
+  images: Array<any> = [];
 
   constructor(private itemService: ItemsService,
     private route: ActivatedRoute) { }
@@ -23,7 +24,8 @@ export class DetalleItemComponent implements OnInit {
     this.itemService.getItemById(id).subscribe(data => {
        this.item = data;
        console.log(this.item);
-       
+       this.images.push(this.item.pictures);
+       this.images = this.images[0];
     });
 
     if(JSON.parse( localStorage.getItem("carrito")))
