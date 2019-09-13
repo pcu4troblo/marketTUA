@@ -29,8 +29,7 @@ export class DetalleItemComponent implements OnInit {
 
        this.item = data;
        console.log(this.item);
-       this.images.push(this.item.pictures);
-       this.images = this.images[0];
+       this.images.push(this.item.images);
 
     });
 
@@ -39,10 +38,9 @@ export class DetalleItemComponent implements OnInit {
   }
   agregarCarrito(){
     let itemCarrito:any = {
-      item : this.item.title,
+      item : this.item.name,
       cost : this.item.price,
       id : this.item.id,
-
       img : this.item.thumbnail
 
     }
