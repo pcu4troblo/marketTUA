@@ -36,7 +36,7 @@ export class DetalleItemComponent implements OnInit {
       item : this.item.title,
       cost : this.item.price,
       id : this.item.id,
-      img : this.item.pictures[0].url
+      img : this.item.thumbnail
     }
     this.carrito.push(itemCarrito);
     localStorage.setItem("carrito" , JSON.stringify(this.carrito));

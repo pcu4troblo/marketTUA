@@ -1,25 +1,39 @@
 <div class="container">
-   <h1><span class="badge badge-pill badge-success">PRODUCTOS EN EL CARRITO</span></h1> 
+  
     <div class="section">
       <div class="row">
-        <div class="column" *ngFor="let item of carrito">
-            <div class="card border-primary mb-3 contenido" style="max-width: 300px; max-height: 300px;">
-                <div class="card-body">
-                <h5 class="card-title">{{item.item}}</h5>
-                <div class="card-body">
-                  <img src="{{item.img}}"  alt="..." style="width: 50%; height: 50%;">
-                  <p class="card-text precio" style="padding-top: 15px">{{item.Cost | currency:"COP":"symbol-narrow"}}</p><br>
-                  <div class="card-footer">
-                  <a type="button" class="card-link" (click)="onSelected(item)" >Detalles>></a>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="col-lg-10">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Img</th>
+                <th scope="col">Item</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Detalles</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of carrito">
+                <th scope="row"><img src="{{item.img}}" alt=""></th>
+                <td id="item">{{item.item}}</td>
+                <td id="price">{{item.cost | currency:"COP":"symbol-narrow"}}</td>
+                <td><a (click)="onSelected(item)">Detalles>></a></td>
+                <td><a id="remover" (click)="remove(item)"><i class="far fa-trash-alt"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row total">
+        <div class="col-lg-5">
+
+        </div>
+        <div class="col-lg-5">
+                <h3>TOTAL: {{suma | currency:"COP":"symbol-narrow"}}</h3> 
         </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-4">
-        <app-carrito [itemsCarrito]="carrito" [tablaOn]="tablaOn"></app-carrito>
-    </div>
+ 
   
