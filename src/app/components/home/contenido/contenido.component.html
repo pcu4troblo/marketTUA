@@ -24,6 +24,7 @@
           <div class="card-body">
             <img src="{{item.thumbnail}}"  alt="..." style="width: 50%; height: 50%;">
             <p class="card-text precio" style="padding-top: 15px">{{item.price | currency:"COP":"symbol-narrow"}}</p><br>
+            <p id="item">{{item.seller.seller_name}}</p>
             <div class="card-footer">
             <a type="button" class="card-link" (click)="onSelected(item)" >Detalles>></a>
 

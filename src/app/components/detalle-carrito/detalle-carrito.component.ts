@@ -32,12 +32,12 @@ export class DetalleCarritoComponent implements OnInit {
   remove(item: any){
   this.carrito.splice(this.carrito.indexOf(item), 1);
   localStorage.setItem("carrito", JSON.stringify(this.carrito));
-  this.suma = this.suma - item.cost;
+  this.suma = this.suma - item.price;
   }
 
   sumar(){
     this.carrito.forEach(item => {
-      this.suma = this.suma + item.cost;
+      this.suma = this.suma + item.price;
     })
   }
 
