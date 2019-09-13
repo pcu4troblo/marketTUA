@@ -37,7 +37,7 @@ export class DetalleCarritoComponent implements OnInit {
 
   sumar(){
     this.carrito.forEach(item => {
-      this.suma = this.suma + item.price;
+      this.suma = this.suma + item.cost;
     })
   }
 
