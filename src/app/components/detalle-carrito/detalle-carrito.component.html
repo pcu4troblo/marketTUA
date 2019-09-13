@@ -1,21 +1,39 @@
 <div class="container">
-   <h1><span class="badge badge-pill badge-success">PRODUCTOS EN EL CARRITO</span></h1> 
+  
     <div class="section">
       <div class="row">
-        <div class="column" *ngFor="let item of carrito">
-          <div class="card text-white bg-primary" style="width: 18rem;">
-             <img src="{{item.img}}" class="card-img-top" alt="..." height="320" width="100">
-            <div class="card-body">
-              <p class="card-title text-white"><a id="detalle" (click) = "onSelected(item)">{{item.item}}</a></p>
-              <p class="card-text ">{{item.Cost | currency:"COP":"symbol-narrow"}}</p><br>
-              <button type="button" class="btn btn-dark" (click)="onSelected(item)" >Detalles</button>
-            </div>
-          </div>
+        <div class="col-lg-10">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Img</th>
+                <th scope="col">Item</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Detalles</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of carrito">
+                <th scope="row"><img src="{{item.img}}" alt=""></th>
+                <td id="item">{{item.item}}</td>
+                <td id="price">{{item.cost | currency:"COP":"symbol-narrow"}}</td>
+                <td><a (click)="onSelected(item)">Detalles>></a></td>
+                <td><a id="remover" (click)="remove(item)"><i class="far fa-trash-alt"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row total">
+        <div class="col-lg-5">
+
+        </div>
+        <div class="col-lg-5">
+                <h3>TOTAL: {{suma | currency:"COP":"symbol-narrow"}}</h3> 
         </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-4">
-        <app-carrito [itemsCarrito]="carrito" [tablaOn]="tablaOn"></app-carrito>
-    </div>
+ 
   

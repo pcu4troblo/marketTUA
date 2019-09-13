@@ -34,4 +34,10 @@ export class ContenidoComponent implements OnInit {
   onSelected(item: any){
     this.router.navigateByUrl("/items/" + item.id);
   }
+
+  onKeydown(event){
+    this.mostrar();
+    console.log(event);
+    
+  }
 }

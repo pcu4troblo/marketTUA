@@ -1,0 +1,32 @@
+a{
+    cursor: pointer;
+}
+
+table{
+    margin-top: 40px;
+}
+
+.far{
+    font-size: 30px;
+    color: darkred;
+}
+
+.total{
+    padding-bottom: 10%;
+}
+
+#item{
+    margin-top: 8px;
+    font-weight: bolder;
+    color: black;
+}
+
+#price{
+    font-size: 2ch;
+    color: blueviolet;
+}
+
+h3{
+    background-color: orange;
+    color: white;
+}

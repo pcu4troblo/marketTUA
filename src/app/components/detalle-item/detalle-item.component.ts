@@ -12,8 +12,11 @@ export class DetalleItemComponent implements OnInit {
 
   tablaOn :boolean;
   item : any = {};
-  carrito : Array<any> = [];
+
+  carrito : Array<CarritoInterface> = [];
+
   suma: number = 0;
+  images: Array<any> = [];
 
   constructor(private itemService: ItemsService,
     private route: ActivatedRoute) { }
@@ -23,9 +26,12 @@ export class DetalleItemComponent implements OnInit {
     
     let id  = this.route.snapshot.params["id"];
     this.itemService.getItemById(id).subscribe(data => {
-       //this.item = data;
-       console.log(data);
-       
+
+       this.item = data;
+       console.log(this.item);
+       this.images.push(this.item.pictures);
+       this.images = this.images[0];
+
     });
 
     if(JSON.parse( localStorage.getItem("carrito")))
@@ -36,6 +42,9 @@ export class DetalleItemComponent implements OnInit {
       item : this.item.title,
       cost : this.item.price,
       id : this.item.id,
+
+      img : this.item.thumbnail
+
     }
     this.carrito.push(itemCarrito);
     localStorage.setItem("carrito" , JSON.stringify(this.carrito));

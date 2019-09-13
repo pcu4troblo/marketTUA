@@ -1,24 +1,24 @@
-<div class="row">
-  <div class="col-lg-8">
-  <div class="card ">
-    <img src="{{item.thumbnail}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h3 class="card-title-primary ">{{item.name}}</h3>
-      <p class="card-text-primary ">{{item.description}}</p>
+
+<div class="container section">
+  <div class="row">
+    <div class="col-lg-4 carou">
+      <ngb-carousel *ngFor="let img of images">
+        <ng-template ngbSlide>
+          <div class="picsum-img">
+            <img src="{{img.url}}" style="max-width: 90%; max-height: 60%;">
+          </div>
+        </ng-template>
+      </ngb-carousel>
     </div>
-    <ul class="list-group list-group-flush  text-white ml-center">
-      <li class="list-group-item bg-primary">Precio: {{item.price | currency:"COP":"symbol-narrow"}}</li>
-      <li class="list-group-item bg-primary">Unidades Vendidas: {{item.sold_units}}</li>
-      <li class="list-group-item bg-primary">Categoria:</li>
-    </ul>
-    <div class="card-action">
-     <h3><span class="badge badge-pill badge-success"> <a id="agregaCarrito" (click)="agregarCarrito()">Agregar al carrito</a></span></h3> 
-     
+    <div class="col-lg-4 description">
+   <h2>{{item.title}}</h2>
+   <p>{{item.descriptions[0].id}}</p>
+   <p class="price">{{item.price | currency:"COP":"symbol-narrow"}}</p>
+   <p><span>Sold Units:</span> {{item.sold_quantity}}</p>
+   <button (click)="agregarCarrito()" type="button" class="btn btn-default cart">Añadir al carrito</button>
+    </div>
+    <div class="col-lg-4">
+      <app-carrito [itemsCarrito]="carrito" [tablaOn]="tablaOn"></app-carrito>
     </div>
   </div>
 </div>
-  <div class="col-lg-4">
-    <app-carrito [itemsCarrito]="carrito" [tablaOn]="tablaOn"></app-carrito>
-  </div>
-</div>
-  
