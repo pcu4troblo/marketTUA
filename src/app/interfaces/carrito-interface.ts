@@ -1,6 +1,6 @@
 export interface CarritoInterface {
-    item : String;
-    cost: number;
+    name : String;
+    price: number;
     id: String;
     img: String
 }

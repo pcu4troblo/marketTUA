@@ -9,7 +9,7 @@ import { CarritoInterface } from 'src/app/interfaces/carrito-interface';
 
 export class CarritoComponent implements OnInit {
 
-  @Input() itemsCarrito: Array<CarritoInterface>;
+  @Input() itemsCarrito: Array<any>;
   @Input() tablaOn : boolean;
   
   suma: number = 0;
@@ -19,9 +19,8 @@ export class CarritoComponent implements OnInit {
   ngOnInit() {
     if(this.itemsCarrito){
     this.itemsCarrito.forEach(item => {
-      this.suma = this.suma + item.cost;
+      this.suma = this.suma + item.price;
       })}
-      console.log(this.itemsCarrito);
       }
 
   remove(item: any){

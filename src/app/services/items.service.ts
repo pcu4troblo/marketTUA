@@ -5,7 +5,8 @@ import { itemsInterface } from '../interfaces/itemsInterface';
 
 @Injectable({providedIn: 'root'})
 export class ItemsService {
-  public API = 'https://api.mercadolibre.com';
+  //public API = 'https://api.mercadolibre.com';
+  public API = 'http://marketua-develop-api.herokuapp.com';
    
   
 
@@ -13,7 +14,7 @@ export class ItemsService {
   }
 
   getAll(filtro: string): Observable<any> {
-    return this.http.get(this.API+ "/sites/MCO/search?q=" + filtro);
+    return this.http.get(this.API+ "/search?q=" + filtro);
   }
 
   getItemById(id: string): Observable<any>{

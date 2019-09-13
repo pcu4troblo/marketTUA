@@ -1,10 +1,10 @@
-
 <div class="container">
+
   <div class="section">
   <div class="row search">  
     <div class="col-md-8">
       <form #filtro="ngForm">
-        <div></div>
+
         <div class="form-group">
           <input class="form-control mr-sm-2 bg-dark text-white" name="buscar" type="search"  placeholder="Ingrese busqueda" aria-label="Search" [(ngModel)]="buscar">
         </div>
@@ -26,12 +26,11 @@
             <p class="card-text precio" style="padding-top: 15px">{{item.itemCost | currency:"COP":"symbol-narrow"}}</p><br>
             <div class="card-footer">
             <a type="button" class="card-link" (click)="onSelected(item)" >Detalles>></a>
+
             </div>
           </div>
         </div>
       </div>
-    </div>
-</div>
-
+  </div>
 
 
