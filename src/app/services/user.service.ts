@@ -1,17 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) {}
+  public usuario : any = {};
 
-  public seller = 'https://api.mercadolibre.com/users/';
+  constructor(private fireAuth: AngularFireAuth) {
 
-  getSeller(sellerId:string): Observable<any>{
-    return this.http.get<any>(this.seller + sellerId);
-     }
+    this.fireAuth.authState.subscribe( user => {
+      console.log(user);
+      
+      if(!user){
+        return;
+      }
+      
+      this.usuario.name = user.displayName;
+      this.usuario.email = user.email;
+      console.log(this.usuario);
+      
+    })
+  }
+
+  
+  login(): any {
+    this.fireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    return this.usuario;
+  }
+  logout() {
+    this.fireAuth.auth.signOut();
+  }
+
 }

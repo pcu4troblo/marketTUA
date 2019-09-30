@@ -6,7 +6,8 @@ import { itemsInterface } from '../interfaces/itemsInterface';
 @Injectable({providedIn: 'root'})
 export class ItemsService {
   //public API = 'https://api.mercadolibre.com';
-  public API = 'http://marketua-develop-api.herokuapp.com';
+  public API = 'https://marketuaflask.herokuapp.com'
+  //public API = 'http://marketua-develop-api.herokuapp.com';
    
   
 
