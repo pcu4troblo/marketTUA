@@ -30,3 +30,9 @@ h3{
     background-color: orange;
     color: white;
 }
+
+.cart{
+    background: #FE980F;
+    color: #ffffff !important;
+    font-size: 15px;
+}

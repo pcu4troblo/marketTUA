@@ -12,16 +12,15 @@ export class UserService {
   constructor(private fireAuth: AngularFireAuth) {
 
     this.fireAuth.authState.subscribe( user => {
-      console.log(user);
-      
       if(!user){
+        this.usuario = {};
+        localStorage.removeItem('user');
         return;
       }
-      
       this.usuario.name = user.displayName;
       this.usuario.email = user.email;
-      console.log(this.usuario);
-      
+      this.usuario.uid = user.uid;
+      localStorage.setItem('user', JSON.stringify(this.usuario));
     })
   }
 
@@ -30,8 +29,14 @@ export class UserService {
     this.fireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
     return this.usuario;
   }
+
   logout() {
     this.fireAuth.auth.signOut();
+    localStorage.removeItem('user');
+  }
+
+  logedIn(){
+    return !!localStorage.getItem('user')
   }
 
 }

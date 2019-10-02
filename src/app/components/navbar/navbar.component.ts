@@ -8,17 +8,30 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NavbarComponent implements OnInit {
 
+  logedIn: boolean;
+  user: any = {};
+
   constructor(
    private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.loggedIn();
   }
 
   Onlogin(){
     this.userService.login();
-    console.log(this.userService.usuario);
-    
+    this.user = this.userService.usuario;
+    console.log(this.user);
+  }
+
+  Onlogout(){
+    this.userService.logout();
+    this.user = {};
+  }
+
+  loggedIn(){
+    this.logedIn = this.userService.logedIn();
   }
 
 }
