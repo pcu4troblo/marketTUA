@@ -17,13 +17,14 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAc55ZlP22-kElzYG-oUB7OpRmzn2GEzuI",
-  authDomain: "front-petrolitos.firebaseapp.com",
-  databaseURL: "https://front-petrolitos.firebaseio.com",
-  projectId: "front-petrolitos",
-  storageBucket: "",
-  messagingSenderId: "929192726084",
-  appId: "1:929192726084:web:dd28e3a7b65f18b8187611"
+  apiKey: "AIzaSyDQ4YDAtPhkkBIu0TWRBnAi-bpBYFjmojM",
+    authDomain: "marketua-b6b26.firebaseapp.com",
+    databaseURL: "https://marketua-b6b26.firebaseio.com",
+    projectId: "marketua-b6b26",
+    storageBucket: "",
+    messagingSenderId: "1094856102481",
+    appId: "1:1094856102481:web:b399d72cb5102ff9b0de70",
+    measurementId: "G-T865GDBV12"
 };
 
 
