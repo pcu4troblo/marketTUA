@@ -6,11 +6,12 @@
       <form #filtro="ngForm">
 
         <div class="form-group">
-          <input class="form-control mr-sm-2 bg-dark text-white" name="buscar" type="search"  placeholder="Ingrese busqueda" aria-label="Search" [(ngModel)]="buscar">
-        </div>
-        
-        <div class="form-group">
-          <button type="button" class="btn btn-dark sm btnBusqueda" (click)="mostrar()" ><i class="fas fa-search"></i></button>
+          <div style="float: left">
+          <input class="form-control mr-sm-2 bg-dark text-white" name="buscar" type="search" size="70" placeholder="Ingrese búsqueda" aria-label="Search" [(ngModel)]="buscar">
+          </div>
+          <div style="float: right">
+            <button type="button" class="btn btn-dark sm btnBusqueda" (click)="mostrar()" ><i class="fas fa-search"></i></button>
+          </div>
         </div>
       </form>
     </div>
