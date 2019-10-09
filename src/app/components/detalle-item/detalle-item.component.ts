@@ -34,7 +34,8 @@ export class DetalleItemComponent implements OnInit {
       name : this.item.name,
       price : this.item.price,
       id : this.item.id,
-      img : this.item.thumbnail
+      img : this.item.thumbnail,
+      quantity: 1
     }
 
     let isItemInCar: boolean = false;
@@ -42,6 +43,7 @@ export class DetalleItemComponent implements OnInit {
     this.carrito.forEach(itemInCar => {
       if(itemInCar.name == this.item.name){
         itemInCar.price = itemInCar.price + this.item.price;
+        itemInCar.quantity = itemInCar.quantity + 1;
         isItemInCar = true;
       }
     })

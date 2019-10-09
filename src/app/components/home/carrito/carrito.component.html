@@ -5,6 +5,7 @@
   <table *ngIf="tablaOn" class="table table-dark table-sm">
     <thead>
       <tr>
+        <th scope="col">Cantidad</th>
         <th scope="col">Item</th>
         <th scope="col">Costo</th>
       </tr>
@@ -12,6 +13,7 @@
     <tbody>
 
       <tr *ngFor="let item of itemsCarrito" class="table-active">
+        <th id="quantity" scope="row">{{item.quantity}}</th>
         <th id="item" scope="row">{{item.name}}</th>
         <th>{{item.price | currency:"COP":"symbol-narrow"}}</th>
         <td><a id="remover" (click)="remove(item)"><i class="far fa-trash-alt"></i></a></td>
