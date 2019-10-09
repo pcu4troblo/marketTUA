@@ -17,6 +17,8 @@ export class UserService {
         localStorage.removeItem('user');
         return;
       }
+      console.log(user);
+      
       this.usuario.name = user.displayName;
       this.usuario.email = user.email;
       this.usuario.uid = user.uid;
