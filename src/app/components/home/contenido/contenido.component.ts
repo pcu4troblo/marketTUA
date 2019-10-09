@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
 import { Router } from '@angular/router';
+import { Categoria } from 'src/app/interfaces/categoria';
+import { CategoriaService } from 'src/app/services/categoria.service';
 
 @Component({
   selector: 'app-contenido',
@@ -15,11 +17,14 @@ export class ContenidoComponent implements OnInit {
 
   buscar: string;
 
-  constructor(private itemService: ItemsService, private router: Router) { }
+  categorias: Array<Categoria> = [];
+
+  constructor(private itemService: ItemsService, private categoriaService: CategoriaService, private router: Router) { }
 
   ngOnInit() {
       
    this.mostrar()
+   this.obtenerCategorias();
     }
     
   mostrar() {
@@ -39,5 +44,10 @@ export class ContenidoComponent implements OnInit {
     this.mostrar();
     console.log(event);
     
+  }
+  obtenerCategorias(){
+    this.categoriaService.categories().subscribe(resultado =>{
+      this.categorias = resultado;
+    });
   }
 }

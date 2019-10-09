@@ -4,7 +4,11 @@
   <div class="row search">  
     <div class="col-md-8">
       <form #filtro="ngForm">
-
+        <div>
+          <select [(ngModel)]="categoriaSeleccionada" placeholder="Categoria" (change)="filtrarPorCategoria()" name="categories" >
+            <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.name}}</option>
+          </select>
+        </div>
         <div class="form-group">
           <div style="float: left">
           <input class="form-control mr-sm-2 bg-dark text-white" name="buscar" type="search" size="70" placeholder="Ingrese búsqueda" aria-label="Search" [(ngModel)]="buscar">
