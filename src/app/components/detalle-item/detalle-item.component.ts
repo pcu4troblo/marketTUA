@@ -36,7 +36,20 @@ export class DetalleItemComponent implements OnInit {
       id : this.item.id,
       img : this.item.thumbnail
     }
-    this.carrito.push(itemCarrito);
+
+    let isItemInCar: boolean = false;
+
+    this.carrito.forEach(itemInCar => {
+      if(itemInCar.name == this.item.name){
+        itemInCar.price = itemInCar.price + this.item.price;
+        isItemInCar = true;
+      }
+    })
+    
+    if(!isItemInCar){
+      this.carrito.push(itemCarrito);  
+    }
+    
     localStorage.setItem("carrito" , JSON.stringify(this.carrito));
     this.tablaOn = true;
   }

@@ -18,6 +18,7 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit() {
     if(this.itemsCarrito){
+
     this.itemsCarrito.forEach(item => {
       this.suma = this.suma + item.price;
       })}
