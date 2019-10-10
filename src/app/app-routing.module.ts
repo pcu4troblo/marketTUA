@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DetalleItemComponent } from './components/detalle-item/detalle-item.component';
 import { BuscarItemsComponent } from './components/buscar-items/buscar-items.component';
 import { DetalleCarritoComponent } from "././/components/detalle-carrito/detalle-carrito.component";
+import {ShippingInfoComponent} from './components/shipping-info/shipping-info.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: "carrito",
     component: DetalleCarritoComponent
+  },
+  {
+    path: "envio",
+    component: ShippingInfoComponent
   }
 ];
 

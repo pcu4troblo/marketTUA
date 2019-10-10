@@ -38,7 +38,11 @@ export class DetalleCarritoComponent implements OnInit {
   sumar(){
     this.carrito.forEach(item => {
       this.suma = this.suma + item.price;
+      localStorage.setItem("init1", this.suma.toString());
     })
   }
 
+  realizarCompra() {
+    this.router.navigateByUrl("/envio");
+  }
 }
