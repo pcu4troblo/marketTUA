@@ -9,12 +9,15 @@ import { Categoria } from '../interfaces/categoria';
 })
 
 export class CategoriaService{
-    public API = 'https://api.mercadolibre.com/sites/MCO/categories';
+    //public API = 'https://api.mercadolibre.com/sites/MCO/categories';
+    public API = 'https://marketuaflask.herokuapp.com/categories';
+    //public API = 'http://marketua-develop-api.herokuapp.com/categories';
+    //pubcli API = FALTA GO
 
     constructor(private http: HttpClient){
 
     }
-    categories():Observable<Categoria[]>{
-        return this.http.get<Categoria[]>(this.API);
+    categories():Observable<any>{
+        return this.http.get<any>(this.API);
     }
 }

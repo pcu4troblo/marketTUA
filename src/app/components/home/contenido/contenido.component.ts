@@ -19,6 +19,8 @@ export class ContenidoComponent implements OnInit {
 
   categorias: Array<Categoria> = [];
 
+  categoriaSeleccionada: string = null;
+
   constructor(private itemService: ItemsService, private categoriaService: CategoriaService, private router: Router) { }
 
   ngOnInit() {
@@ -47,7 +49,17 @@ export class ContenidoComponent implements OnInit {
   }
   obtenerCategorias(){
     this.categoriaService.categories().subscribe(resultado =>{
-      this.categorias = resultado;
+      this.categorias = resultado.data;
     });
   }
+
+  filtrarPorCategoria(){
+    if (this.categoriaSeleccionada !== null){
+      this.items = [];
+      this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe(data => {
+        this.items;
+      });
+    }
+  }
+
 }
