@@ -5,13 +5,15 @@ import { itemsInterface } from '../interfaces/itemsInterface';
 
 @Injectable({providedIn: 'root'})
 export class ItemsService {
+  
+  //Mercadolibre
   //public API = 'https://api.mercadolibre.com';
+  //Flask
   public API = 'https://marketuaflask.herokuapp.com'
+  //Ruby
   //public API = 'http://marketua-develop-api.herokuapp.com';
+  //Go
    
-  //http://marketua-develop-api.herokuapp.com/items/category/{categoryName}
-  //https://marketuaflask.herokuapp.com/items/brand/{brandName}
-
   constructor(private http: HttpClient) {
   }
 
@@ -23,12 +25,8 @@ export class ItemsService {
     return this.http.get(this.API+ "/items/" + id);
   }
 
-  getItemByCategory(category: string){
+  getItemByCategory(category: string): Observable<any>{
     return this.http.get(this.API + "/items/category/" + category);
-  }
-
-  getItemByMarca(brands: string){
-    return this.http.get(this.API + "/items/brand/" + brands);
   }
 
  }
