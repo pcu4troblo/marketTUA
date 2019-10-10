@@ -62,13 +62,22 @@ export class ContenidoComponent implements OnInit {
   obtenerMarcas(){
     this.marcaService.brands().subscribe(resultado => {
       this.marcas = resultado.brands;
-    })
+    });
   }
 
   filtrarPorCategoria(){
     if (this.categoriaSeleccionada !== null){
       this.items = [];
       this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe(data => {
+        this.items;
+      });
+    }
+  }
+
+  filtrarPorMarca(){
+    if (this.marcaSeleccionada !== null){
+      this.items = [];
+      this.itemService.getItemByMarca(this.marcaSeleccionada).subscribe(brands => {
         this.items;
       });
     }

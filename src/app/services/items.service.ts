@@ -10,6 +10,7 @@ export class ItemsService {
   //public API = 'http://marketua-develop-api.herokuapp.com';
    
   //http://marketua-develop-api.herokuapp.com/items/category/{categoryName}
+  //https://marketuaflask.herokuapp.com/items/brand/{brandName}
 
   constructor(private http: HttpClient) {
   }
@@ -24,6 +25,10 @@ export class ItemsService {
 
   getItemByCategory(category: string){
     return this.http.get(this.API + "/items/category/" + category);
+  }
+
+  getItemByMarca(brands: string){
+    return this.http.get(this.API + "/items/brand/" + brands);
   }
 
  }
