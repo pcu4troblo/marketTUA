@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ItemsService } from './services/items.service';
 import { BuscarItemsComponent } from './components/buscar-items/buscar-items.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DetalleItemComponent } from './components/detalle-item/detalle-item.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CarritoComponent } from './components/home/carrito/carrito.component';
@@ -15,6 +15,7 @@ import { ContenidoComponent } from './components/home/contenido/contenido.compon
 import { DetalleCarritoComponent } from './components/detalle-carrito/detalle-carrito.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import {ShippingInfoComponent} from './components/shipping-info/shipping-info.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDQ4YDAtPhkkBIu0TWRBnAi-bpBYFjmojM",
@@ -27,7 +28,6 @@ const firebaseConfig = {
     measurementId: "G-T865GDBV12"
 };
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,17 +37,19 @@ const firebaseConfig = {
     CarritoComponent,
     FiltroComponent,
     ContenidoComponent,
-    DetalleCarritoComponent
+    DetalleCarritoComponent,
+    ShippingInfoComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    NgbModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        NgbModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireAuthModule,
+        ReactiveFormsModule
+    ],
   providers: [ItemsService],
   bootstrap: [AppComponent]
 })
