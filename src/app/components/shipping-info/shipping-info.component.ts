@@ -11,6 +11,8 @@ export class ShippingInfoComponent implements OnInit {
   shipping: FormGroup;
   submitted = false;
   total: String;
+  success = false;
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -34,6 +36,6 @@ export class ShippingInfoComponent implements OnInit {
     if (this.shipping.invalid) {
       return;
     }
-    alert('Mensaje Enviado !')
+    this.success = true;
   }
 }

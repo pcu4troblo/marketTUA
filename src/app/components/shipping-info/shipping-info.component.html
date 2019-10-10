@@ -1,8 +1,8 @@
 <div class="container">
     <div class="starter-template">
         <div class="row">
-            <div class="col-md-12 mt-5">
-                <h1>Finalizar compra </h1>
+            <div class="col-md-7 mt-5">
+                <h1 style="font-family: Verdana">Finalizar compra </h1><br> <br>
 
                 <form [formGroup]="shipping" (ngSubmit)="onSubmit()">
                     <div class="form-group">
@@ -52,7 +52,7 @@
 
                         </select>
                         <div *ngIf="submitted && f.postre.errors" class="invalid-feedback">
-                            <div *ngIf="f.postre.errors.required">Por favor, Selecciona el Postre</div>
+                            <div *ngIf="f.postre.errors.required">Por favor, Selecciona el tipo de envío</div>
                         </div>
                     </div>
 
@@ -60,20 +60,26 @@
                         <label for="pay"> Pago</label>
                         <select class="form-control" formControlName="pay" [ngClass]="{ 'is-invalid': submitted && f.pay.errors }">
                             <option value="contraentrega">Pago Contraentrega</option>
-
                         </select>
                         <div *ngIf="submitted && f.postre.errors" class="invalid-feedback">
-                            <div *ngIf="f.postre.errors.required">Por favor, Selecciona el Postre</div>
+                            <div *ngIf="f.postre.errors.required">Por favor, Selecciona el pago</div>
                         </div>
                     </div>
-
-                    <h3>Total a pagar:</h3>
-                    <h4>{{total | currency:"COP":"symbol-narrow"}}</h4>
-
-                    <div class="form-group">
-                        <button class="btn btn-primary">Aceptar</button>
-                    </div>
                 </form>
+            </div>
+
+            <div class="col-md-5 mt-5">
+                <h3 style="font-family: Verdana">Total a pagar:</h3><br>
+                <h4>{{total | currency:"COP":"symbol-narrow"}}</h4><br>
+                <div class="form-group">
+
+                    <div *ngIf="success" class="alert alert-warning alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        Compra realizada con éxito.
+                    </div>
+
+                    <button style="border-radius: 10px" class="btn btn-primary btn-block">Comprar</button>
+                </div>
             </div>
         </div>
     </div>
