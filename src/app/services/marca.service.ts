@@ -7,8 +7,10 @@ import { Observable } from 'rxjs';
 })
 
 export class MarcaService{
-    
-    public API = 'http://marketua-develop-api.herokuapp.com/brands'
+
+
+    //Flask
+    public API = 'https://marketuaflask.herokuapp.com/brands'
 
     constructor(private http: HttpClient){
 

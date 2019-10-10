@@ -19,11 +19,11 @@ export class ContenidoComponent implements OnInit {
 
   buscar: string;
 
-  categorias: Array<Categoria> = [];
+  categorias: Array<any> = [];
 
   categoriaSeleccionada: string = null;
 
-  marcas: Array<Marca> = [];
+  marcas: Array<any> = [];
 
   marcaSeleccionada: string = null;
 
@@ -32,8 +32,9 @@ export class ContenidoComponent implements OnInit {
   ngOnInit() {
       
    this.mostrar()
-   this.obtenerCategorias()
-   this.obtenerMarcas();    }
+   this.obtenerCategorias();
+   this.obtenerMarcas();    
+  }
     
   mostrar() {
     this.items = [];
@@ -41,7 +42,7 @@ export class ContenidoComponent implements OnInit {
       .subscribe(data => {
               this.items = data.products;
               console.log(this.items);
-            })
+            });
   }
 
   onSelected(item: any){
@@ -66,19 +67,19 @@ export class ContenidoComponent implements OnInit {
   }
 
   filtrarPorCategoria(){
-    if (this.categoriaSeleccionada !== null){
+    if(this.categoriaSeleccionada !== null){
       this.items = [];
-      this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe(data => {
-        this.items;
-      });
+      this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe( resultado =>{
+        this.items = resultado.products;
+      })
     }
   }
 
   filtrarPorMarca(){
     if (this.marcaSeleccionada !== null){
       this.items = [];
-      this.itemService.getItemByMarca(this.marcaSeleccionada).subscribe(brands => {
-        this.items;
+      this.itemService.getAll(this.marcaSeleccionada).subscribe(resultado => {
+        this.items = resultado.products;
       });
     }
   }
