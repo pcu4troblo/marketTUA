@@ -3,6 +3,8 @@ import { ItemsService } from 'src/app/services/items.service';
 import { Router } from '@angular/router';
 import { Categoria } from 'src/app/interfaces/categoria';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { Marca } from 'src/app/interfaces/marca';
+import { MarcaService } from 'src/app/services/marca.service';
 
 @Component({
   selector: 'app-contenido',
@@ -21,13 +23,17 @@ export class ContenidoComponent implements OnInit {
 
   categoriaSeleccionada: string = null;
 
-  constructor(private itemService: ItemsService, private categoriaService: CategoriaService, private router: Router) { }
+  marcas: Array<Marca> = [];
+
+  marcaSeleccionada: string = null;
+
+  constructor(private itemService: ItemsService, private categoriaService: CategoriaService, private marcaService: MarcaService , private router: Router) { }
 
   ngOnInit() {
       
    this.mostrar()
-   this.obtenerCategorias();
-    }
+   this.obtenerCategorias()
+   this.obtenerMarcas();    }
     
   mostrar() {
     this.items = [];
@@ -51,6 +57,12 @@ export class ContenidoComponent implements OnInit {
     this.categoriaService.categories().subscribe(resultado =>{
       this.categorias = resultado.data;
     });
+  }
+
+  obtenerMarcas(){
+    this.marcaService.brands().subscribe(resultado => {
+      this.marcas = resultado.brands;
+    })
   }
 
   filtrarPorCategoria(){
