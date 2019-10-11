@@ -6,7 +6,7 @@
       <form #filtro="ngForm">
         <div style="width: 100%; height: 35px">
             <div style="float: left; width: 50%">
-                Categoría: 
+                Categoría:  
                 <select [(ngModel)]="categoriaSeleccionada" placeholder="Categoria" (change)="filtrarPorCategoria()" name="categories" >
                   <option *ngFor="let categoria of categorias" value="{{categoria.category}}">{{categoria.category}}</option>
                 </select>
