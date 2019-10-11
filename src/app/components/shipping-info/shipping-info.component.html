@@ -4,7 +4,7 @@
             <div class="col-md-7 mt-5">
                 <h1 style="font-family: Verdana">Finalizar compra </h1><br> <br>
 
-                <form [formGroup]="shipping" (ngSubmit)="onSubmit()">
+                <form [formGroup]="shipping">
                     <div class="form-group">
                         <label>Dirección de entrega</label>
                         <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
@@ -51,8 +51,8 @@
                             <option value="domicilio">Entrega a domicilio</option>
 
                         </select>
-                        <div *ngIf="submitted && f.postre.errors" class="invalid-feedback">
-                            <div *ngIf="f.postre.errors.required">Por favor, Selecciona el tipo de envío</div>
+                        <div *ngIf="submitted && f.shippingType.errors" class="invalid-feedback">
+                            <div *ngIf="f.shippingType.errors.required">Por favor, Selecciona el tipo de envío</div>
                         </div>
                     </div>
 
@@ -61,8 +61,8 @@
                         <select class="form-control" formControlName="pay" [ngClass]="{ 'is-invalid': submitted && f.pay.errors }">
                             <option value="contraentrega">Pago Contraentrega</option>
                         </select>
-                        <div *ngIf="submitted && f.postre.errors" class="invalid-feedback">
-                            <div *ngIf="f.postre.errors.required">Por favor, Selecciona el pago</div>
+                        <div *ngIf="submitted && f.pay.errors" class="invalid-feedback">
+                            <div *ngIf="f.pay.errors.required">Por favor, Selecciona el pago</div>
                         </div>
                     </div>
                 </form>
@@ -73,12 +73,16 @@
                 <h4>{{total | currency:"COP":"symbol-narrow"}}</h4><br>
                 <div class="form-group">
 
-                    <div *ngIf="success" class="alert alert-warning alert-dismissable">
+                    <div *ngIf="success" class="alert alert-success">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         Compra realizada con éxito.
                     </div>
+                    <div *ngIf="shipping.invalid && submitted" class="alert alert-warning alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        Completa los campos.
+                    </div>
 
-                    <button style="border-radius: 10px" class="btn btn-primary btn-block">Comprar</button>
+                    <button style="border-radius: 10px" class="btn btn-primary btn-block" (click)="onSubmit()">Comprar</button>
                 </div>
             </div>
         </div>

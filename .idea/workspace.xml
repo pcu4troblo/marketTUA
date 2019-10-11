@@ -5,6 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/shipping-info/shipping-info.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/shipping-info/shipping-info.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/shipping-info/shipping-info.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/shipping-info/shipping-info.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/categoria.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/categoria.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/items.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/items.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/marca.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/marca.service.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,6 +91,7 @@
       <workItem from="1570025957924" duration="9848000" />
       <workItem from="1570726109019" duration="8959000" />
       <workItem from="1570741106225" duration="4471000" />
+      <workItem from="1570811676963" duration="3103000" />
     </task>
     <servers />
   </component>
