@@ -4,6 +4,7 @@ import { DetalleItemComponent } from './components/detalle-item/detalle-item.com
 import { BuscarItemsComponent } from './components/buscar-items/buscar-items.component';
 import { DetalleCarritoComponent } from "././/components/detalle-carrito/detalle-carrito.component";
 import {ShippingInfoComponent} from './components/shipping-info/shipping-info.component';
+import {OrdersComponent} from './components/orders/orders.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: "envio",
     component: ShippingInfoComponent
+  },
+  {
+    path: "pedidos",
+    component: OrdersComponent
   }
 ];
 

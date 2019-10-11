@@ -21,11 +21,12 @@
           {{user.name}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" (click)="Onlogout()">LogOut</a>
+          <a class="dropdown-item" (click)="goOrders()">Mis pedidos</a>
+          <a class="dropdown-item" (click)="Onlogout()">Cerrar sesión</a>
         </div>
       </li>
       <li *ngIf="!user.name" class="nav-item">
-        <a class="nav-link" id='logout' (click)="Onlogin()">Login</a>
+        <a class="nav-link" id='logout' (click)="Onlogin()">Iniciar sesión</a>
       </li>
 
     </ul>
