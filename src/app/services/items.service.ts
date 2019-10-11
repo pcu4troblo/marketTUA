@@ -8,6 +8,7 @@ export class ItemsService {
   
   //Mercadolibre
   //public API = 'https://api.mercadolibre.com';
+
   //Flask
   public API = 'https://marketuaflask.herokuapp.com'
   //Ruby

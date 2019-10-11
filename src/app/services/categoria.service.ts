@@ -11,6 +11,7 @@ import { Categoria } from '../interfaces/categoria';
 export class CategoriaService{
     //Mercadolibre
     //public API = 'https://api.mercadolibre.com/sites/MCO/categories';
+
     //Flask
     public API = 'https://marketuaflask.herokuapp.com/categories';
     //Ruby
