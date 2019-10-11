@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,9 +12,8 @@ export class NavbarComponent implements OnInit {
   logedIn: boolean;
   user: any = {};
 
-  constructor(
-   private userService: UserService
-  ) { }
+  constructor(private router: Router,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.loggedIn();
@@ -34,4 +34,7 @@ export class NavbarComponent implements OnInit {
     this.logedIn = this.userService.logedIn();
   }
 
+  goOrders() {
+    this.router.navigateByUrl("/pedidos");
+  }
 }
