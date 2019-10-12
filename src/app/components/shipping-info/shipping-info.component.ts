@@ -16,7 +16,7 @@ export class ShippingInfoComponent implements OnInit {
   success = false;
   user: any;
   carrito : Array<CarritoInterface> = [];
-  body: any;
+  body: {  };
   cantidad: any = 0;
 
   constructor(private formBuilder: FormBuilder,
@@ -28,25 +28,38 @@ export class ShippingInfoComponent implements OnInit {
     this.cantidad = localStorage.getItem("init2");
     this.user = localStorage.getItem("user");
     this.carrito = JSON.parse( localStorage.getItem("carrito"));
+
     this.shipping = this.formBuilder.group({
-      'address': ['', Validators.required, Validators.minLength(4)],
+      'shipment_address': ['', Validators.required, Validators.minLength(4)],
       'apto': ['', Validators.required, Validators.minLength(3)],
       'municipality': ['', Validators.required, Validators.minLength(4)],
       'departament': ['', Validators.required, Validators.minLength(4)],
-      'nameReceiver': ['', Validators.required, Validators.minLength(4)],
+      'user_name': ['', Validators.required, Validators.minLength(4)],
       'phone': ['', Validators.required, Validators.minLength(7)],
       'shippingType': ['', Validators.required],
-      'pay': ['', Validators.required]
+      'payment_method': ['', Validators.required],
+      'quantity': [this.cantidad, Validators.required],
+      'total': [this.total, Validators.required]
     });
   }
 
   get f() { return this.shipping.controls; }
+
+  checkout() {
+    this.carrito.forEach(item => {
+      this.userService.checkout(this.shipping.value).subscribe( resultado =>{
+        localStorage.setItem("userName", this.shipping.value.user_name);
+        this.success = true;
+        console.log('Información almacenada con éxito');
+      })
+    });
+  }
 
   onSubmit() {
     this.submitted = true;
     if (this.shipping.invalid) {
       return;
     }
-    this.success = true;
+    this.checkout();
   }
 }
