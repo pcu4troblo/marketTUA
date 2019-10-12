@@ -31,8 +31,13 @@
                         </div>
                     </div>
                     <div class="form-group">
+<<<<<<< HEAD
                         <label id="nameLabel">Nombre de la persona que va a recibir</label>
                         <input id="nameInput" [disabled]=true class="form-control" formControlName="user_name" [ngClass]="{ 'is-invalid': submitted && f.user_name.errors }"/>
+=======
+                        <label>Nombre de la persona que va a recibir</label>
+                        <input [disabled]=true class="form-control" formControlName="user_name" [ngClass]="{ 'is-invalid': submitted && f.user_name.errors }"/>
+>>>>>>> 3ed21b55c48e9b36e043752235f90270a5b89680
                         <div *ngIf="submitted && f.user_name.errors" class="invalid-feedback">
                             <div id="nameError" *ngIf="f.user_name.errors.required">Por favor, ingresa el nombre de quien va a recibir el pedido</div>
                         </div>
