@@ -2,52 +2,52 @@
     <div class="starter-template">
         <div class="row">
             <div class="col-md-7 mt-5">
-                <h1 style="font-family: Verdana">Finalizar compra </h1><br> <br>
+                <h1 id="shippTitle" style="font-family: Verdana">Finalizar compra </h1><br> <br>
 
                 <form [formGroup]="shipping">
                     <div class="form-group">
-                        <label>Dirección de entrega</label>
-                        <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+                        <label id="directionLabel">Dirección de entrega</label>
+                        <input id="directionInput" type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
                         <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
                             <div *ngIf="f.nya.errors.required">Por favor, ingresa tu dirección</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Piso o departamento</label>
-                        <input type="text" formControlName="apto" class="form-control"/>
+                        <label id="aptoLabel">Piso o departamento</label>
+                        <input id="aptoInput" type="text" formControlName="apto" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <label>Municipio</label>
-                        <input type="text" formControlName="municipality" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.municipality.errors }" />
+                        <label id="townLabel">Municipio</label>
+                        <input id="townInput" type="text" formControlName="municipality" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.municipality.errors }" />
                         <div *ngIf="submitted && f.municipality.errors" class="invalid-feedback">
                             <div *ngIf="f.municipality.errors.required">Por favor, ingresa el municipio</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Departamento</label>
-                        <input class="form-control" formControlName="departament" [ngClass]="{ 'is-invalid': submitted && f.departament.errors }"/>
+                        <label id="departamentLabel">Departamento</label>
+                        <input id="departamentInput" class="form-control" formControlName="departament" [ngClass]="{ 'is-invalid': submitted && f.departament.errors }"/>
                         <div *ngIf="submitted && f.departament.errors" class="invalid-feedback">
                             <div *ngIf="f.departament.errors.required">Por favor, ingresa el departamento</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Nombre de la persona que va a recibir</label>
-                        <input class="form-control" [value]="user.name" formControlName="nameReceiver" [ngClass]="{ 'is-invalid': submitted && f.nameReceiver.errors }"/>
+                        <label id="nameLabel">Nombre de la persona que va a recibir</label>
+                        <input id="nameInput" class="form-control" [value]="user.name" formControlName="nameReceiver" [ngClass]="{ 'is-invalid': submitted && f.nameReceiver.errors }"/>
                         <div *ngIf="submitted && f.nameReceiver.errors" class="invalid-feedback">
                             <div *ngIf="f.nameReceiver.errors.required">Por favor, ingresa el nombre de quien va a recibir el pedido</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Teléfono</label>
-                        <input class="form-control" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
+                        <label id="phoneLabel">Teléfono</label>
+                        <input id="phoneInput" class="form-control" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
                         <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
                             <div *ngIf="f.phone.errors.required">Por favor, ingresa el teléfono</div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="shippingType"> Tipo de envío</label>
-                        <select class="form-control" formControlName="shippingType" [ngClass]="{ 'is-invalid': submitted && f.shippingType.errors }">
+                        <label id="typeLabel" for="shippingType"> Tipo de envío</label>
+                        <select id="typeSelect" class="form-control" formControlName="shippingType" [ngClass]="{ 'is-invalid': submitted && f.shippingType.errors }">
                             <option value="domicilio">Entrega a domicilio</option>
 
                         </select>
@@ -57,8 +57,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="pay"> Pago</label>
-                        <select class="form-control" formControlName="pay" [ngClass]="{ 'is-invalid': submitted && f.pay.errors }">
+                        <label id="payLabel" for="pay"> Pago</label>
+                        <select  id="paySelect" class="form-control" formControlName="pay" [ngClass]="{ 'is-invalid': submitted && f.pay.errors }">
                             <option value="contraentrega">Pago Contraentrega</option>
                         </select>
                         <div *ngIf="submitted && f.pay.errors" class="invalid-feedback">
@@ -69,7 +69,7 @@
             </div>
 
             <div class="col-md-5 mt-5">
-                <h3 style="font-family: Verdana">Total a pagar:</h3><br>
+                <h3 id="total" style="font-family: Verdana">Total a pagar:</h3><br>
                 <h4>{{total | currency:"COP":"symbol-narrow"}}</h4><br>
                 <div class="form-group">
 
@@ -82,7 +82,7 @@
                         Completa los campos.
                     </div>
 
-                    <button style="border-radius: 10px" class="btn btn-primary btn-block" (click)="onSubmit()">Comprar</button>
+                    <button id="buy" style="border-radius: 10px" class="btn btn-primary btn-block" (click)="onSubmit()">Comprar</button>
                 </div>
             </div>
         </div>

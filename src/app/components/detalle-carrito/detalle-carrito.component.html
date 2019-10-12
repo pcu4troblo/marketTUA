@@ -3,13 +3,13 @@
   <div class="section">
     <div class="row">
       <div class="col-lg-10">
-        <table class="table">
+        <table id="table" class="table">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">Img</th>
-              <th scope="col">Item</th>
-              <th scope="col">Precio</th>
-              <th scope="col">Detalles</th>
+              <th id="img" scope="col">Img</th>
+              <th id="item"scope="col">Item</th>
+              <th id="price"scope="col">Precio</th>
+              <th id="details"scope="col">Detalles</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -29,7 +29,7 @@
       <div class="col-sm-5">
 
       </div>
-      <div class="col-sm-5">
+      <div id="total" class="col-sm-5">
               <h3>TOTAL: {{suma | currency:"COP":"symbol-narrow"}}</h3> 
       </div>
     </div>
@@ -38,7 +38,7 @@
 
       </div>
       <div class="col-sm-5">
-        <a class="btn cart" (click)="realizarCompra()">Realizar Compra</a>
+        <a id="buy" class="btn cart" (click)="realizarCompra()">Realizar Compra</a>
       </div>
     </div>
   </div>

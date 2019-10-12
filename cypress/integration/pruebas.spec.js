@@ -102,12 +102,9 @@ it('Nav-bar Productos' , () =>{
   cy.get('nav').find('a#productos').click();
 });
 
-it('Nav-bar Carrito' , () =>{
-  cy.get('nav').find('a#carrito').click();
-});
 })
 
-context('Carrito', () => {
+context('Item details', () => {
   beforeEach(() => {
      cy.visit('http://localhost:4200/items/6')
    });
@@ -129,8 +126,106 @@ it('Item components exist' , () =>{
   cy.get('a#carritoButton');
 });
 
+it('Carrito button click', () => {
+  cy.get('a#carritoButton').click();
+  cy.get('table#tabla');
+  
+});
 
+it('Components carrito table exists', () => {
+  cy.get('button#add').click();
+  cy.get('th#quantity');
+  cy.get('th#item');
+  cy.get('th#price');
+});
 
+it('Add button click', () => {
+  cy.get('button#add').click();
+  cy.get('a#carritoButton').click();
+  cy.get('nav').find('a#carrito').click();
+});
 
+});
+
+context('Carrito', () => {
+  beforeEach(() => {
+     cy.visit('http://localhost:4200/carrito')
+   });
+
+it('should visit carrito', () => {
+  cy.visit('http://localhost:4200/carrito');
+});
+
+it('Table exists', () => {
+  cy.get('table#table');
+});
+
+it('Table components exists', () => {
+  cy.get('th#img');
+  cy.get('th#item');
+  cy.get('th#price');
+  cy.get('th#details');
+  cy.get('div#total');
+  cy.get('a#buy');
+});
 })
 
+context('Shipping', () => {
+  beforeEach(() => {
+     cy.visit('http://localhost:4200/envio')
+   });
+
+it('Page title exists', () => {
+  cy.get('h1#shippTitle');
+});
+
+it('Direction components', () => {
+  cy.get('label#directionLabel');
+  cy.get('input#directionInput');
+});
+
+it('Apto components', () => {
+  cy.get('label#aptoLabel');
+  cy.get('input#aptoInput');
+});
+
+it('Town components', () => {
+  cy.get('label#townLabel');
+  cy.get('input#townInput');
+});
+
+it('Departament components', () => {
+  cy.get('label#departamentLabel');
+  cy.get('input#departamentInput');
+});
+
+it('Name components', () => {
+  cy.get('label#nameLabel');
+  cy.get('input#nameInput');
+});
+
+it('Phone components', () => {
+  cy.get('label#phoneLabel');
+  cy.get('input#phoneInput');
+});
+
+it('Type components', () => {
+  cy.get('label#typeLabel');
+  cy.get('select#typeSelect').select('Entrega a domicilio');
+});
+
+it('Pay components', () => {
+  cy.get('label#payLabel');
+  cy.get('select#paySelect').select('Pago Contraentrega');
+});
+
+it('Total label exists', () => {
+  cy.get('h3#total');
+});
+
+it('Buy button exists', () => {
+  cy.get('button#buy');
+  
+});
+
+})
