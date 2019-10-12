@@ -32,7 +32,8 @@ export class ContenidoComponent implements OnInit {
   constructor(private itemService: ItemsService, private categoriaService: CategoriaService, private marcaService: MarcaService , private router: Router) { }
 
   ngOnInit() {
-      
+    this.obtenerCategorias();
+    this.obtenerMarcas();
   }
     
   mostrar() {
@@ -41,8 +42,8 @@ export class ContenidoComponent implements OnInit {
     this.itemService.API.forEach(item =>{
       this.itemService.getAll(this.buscar,item)
         .subscribe(data => {
-              //this.items = data.products;
-              this.itemsArray.push(data.products);
+              this.items = data.products;
+              //this.itemsArray = data.products;
               console.log(data);
         });
         this.itemsArray.forEach(item =>{
