@@ -78,7 +78,7 @@ export class ContenidoComponent implements OnInit {
       this.items = [];
       this.itemService.API.forEach(item =>{
           this.itemService.getItemByCategory(this.categoriaSeleccionada,item).subscribe( resultado =>{
-          this.items.push(resultado.products);
+          this.items = resultado.products;
         })
       })
     }
@@ -89,7 +89,7 @@ export class ContenidoComponent implements OnInit {
       this.items = [];
       this.itemService.API.forEach(item =>{
         this.itemService.getAll(this.marcaSeleccionada,item).subscribe(resultado => {
-          this.items.push(resultado.products);
+          this.items = resultado.products;
         });
       })
     }
