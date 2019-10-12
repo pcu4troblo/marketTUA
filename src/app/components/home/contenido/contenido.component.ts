@@ -43,23 +43,13 @@ export class ContenidoComponent implements OnInit {
       this.itemService.getAll(this.buscar,item)
         .subscribe(data => {
               this.items = data.products;
-              //this.itemsArray = data.products;
               console.log(data);
         });
         this.itemsArray.forEach(item =>{
-          
             this.items.push(item);
-       
         })
-        
         console.log(this.items);
     })
-    
-    //this.itemService.getAll(this.buscar)
-    //  .subscribe(data => {
-    //          this.items = data.products;
-    //          console.log(this.items);
-    //        });
   }
 
   onSelected(item: any){
