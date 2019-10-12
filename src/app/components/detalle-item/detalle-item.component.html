@@ -2,8 +2,8 @@
 <div class="container section">
   <div class="row">
     <div class="col-lg-4 carou">
-      <ngb-carousel *ngFor="let img of images">
-        <ng-template ngbSlide>
+      <ngb-carousel>
+        <ng-template *ngFor="let img of images" ngbSlide>
           <div class="picsum-img">
             <img src="{{img.url}}" style="max-width: 90%; max-height: 60%;">
           </div>
