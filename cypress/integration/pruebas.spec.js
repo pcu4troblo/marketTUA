@@ -29,6 +29,7 @@ context('Home', () => {
 
  it('Select click cellphone', () =>{
   cy.get('select#category').select('cellphone');
+
 });
 
 it('Select click computers' , () =>{
@@ -220,7 +221,7 @@ it('Pay components', () => {
 });
 
 it('Total label exists', () => {
-  cy.get('h3#total');
+  cy.get('h4#total');
 });
 
 it('Buy button exists', () => {

@@ -7,7 +7,7 @@
                 <form [formGroup]="shipping">
                     <div class="form-group">
                         <label id="directionLabel">Dirección de entrega</label>
-                        <input id="directionInput" type="text" formControlName="shipment_address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.shipment_address.errors }" />
+                        <input id="directionInput"type="text" formControlName="shipment_address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.shipment_address.errors }" />
                         <div *ngIf="submitted && f.shipment_address.errors" class="invalid-feedback">
                             <div id="directionError" *ngIf="f.shipment_address.errors.required">Por favor, ingresa tu dirección</div>
                         </div>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <label id="nameLabel">Nombre de la persona que va a recibir</label>
-                        <input id="nameInput" [disabled]=true class="form-control" [value]="user.name" formControlName="user_name" [ngClass]="{ 'is-invalid': submitted && f.user_name.errors }"/>
+                        <input id="nameInput" [disabled]=true class="form-control" formControlName="user_name" [ngClass]="{ 'is-invalid': submitted && f.user_name.errors }"/>
                         <div *ngIf="submitted && f.user_name.errors" class="invalid-feedback">
                             <div id="nameError" *ngIf="f.user_name.errors.required">Por favor, ingresa el nombre de quien va a recibir el pedido</div>
                         </div>
@@ -47,12 +47,11 @@
 
                     <div class="form-group">
                         <label id="typeLabel" for="shippingType"> Tipo de envío</label>
-                        <select id="typeSelect" class="form-control" formControlName="shippingType" [ngClass]="{ 'is-invalid': submitted && f.shippingType.errors }">
+                        <select id="typeSelect"class="form-control" formControlName="shippingType" [ngClass]="{ 'is-invalid': submitted && f.shippingType.errors }">
                             <option value="domicilio">Entrega a domicilio</option>
-
                         </select>
                         <div *ngIf="submitted && f.shippingType.errors" class="invalid-feedback">
-                            <div id="typeError" *ngIf="f.shippingType.errors.required">Por favor, Selecciona el tipo de envío</div>
+                            <div id="typeError"*ngIf="f.shippingType.errors.required">Por favor, Selecciona el tipo de envío</div>
                         </div>
                     </div>
 
@@ -72,8 +71,8 @@
 
                 <h3 style="font-family: Verdana">Cantidad de productos:</h3><br>
                 <h4>{{cantidad}}</h4><br>
-                <h3 id="total" style="font-family: Verdana">Total a pagar:</h3><br>
-                <h4 formControlName="total">{{total | currency:"COP":"symbol-narrow"}}</h4><br>
+                <h3 style="font-family: Verdana">Total a pagar:</h3><br>
+                <h4 id="total">{{total | currency:"COP":"symbol-narrow"}}</h4><br>
                 <div class="form-group">
 
                     <div *ngIf="success" class="alert alert-success">
@@ -85,7 +84,7 @@
                         Completa los campos.
                     </div>
 
-                    <button id="buy" style="border-radius: 10px" class="btn btn-primary btn-block" (click)="onSubmit()">Comprar</button>
+                    <button id="buy"style="border-radius: 10px" class="btn btn-primary btn-block" (click)="onSubmit()">Comprar</button>
                 </div>
             </div>
         </div>
