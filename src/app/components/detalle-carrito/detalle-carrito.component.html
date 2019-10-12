@@ -8,6 +8,7 @@
             <tr>
               <th id="img" scope="col">Img</th>
               <th id="item"scope="col">Item</th>
+              <th id="cantidad"scope="col">Cantidad</th>
               <th id="price"scope="col">Precio</th>
               <th id="details"scope="col">Detalles</th>
               <th scope="col"></th>
@@ -17,6 +18,7 @@
             <tr *ngFor="let item of carrito">
               <th scope="row"></th>
               <td id="item">{{item.name}}</td>
+              <td id="quantity">{{item.quantity}}</td>
               <td id="price">{{item.price | currency:"COP":"symbol-narrow"}}</td>
               <td><a (click)="onSelected(item)">Detalles>></a></td>
               <td><a id="remover" (click)="remove(item)"><i class="far fa-trash-alt"></i></a></td>

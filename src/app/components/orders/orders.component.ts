@@ -17,13 +17,13 @@ export class OrdersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = localStorage.getItem("user");
+    this.user = localStorage.getItem("userName");
     this.getOrders();
   }
 
   getOrders() {
     //parametro quemado por el momento
-    this.userService.getOrders("daniel").subscribe( resultado =>{
+    this.userService.getOrders(this.user).subscribe( resultado =>{
       this.orders = resultado.orders;
     })
   }
