@@ -14,6 +14,8 @@ import { MarcaService } from 'src/app/services/marca.service';
 export class ContenidoComponent implements OnInit {
 
   items: Array<any> = [];
+
+  itemsArray: Array<any> = [];
   
   seller: any;
 
@@ -31,18 +33,32 @@ export class ContenidoComponent implements OnInit {
 
   ngOnInit() {
       
-   this.mostrar()
-   this.obtenerCategorias();
-   this.obtenerMarcas();    
   }
     
   mostrar() {
     this.items = [];
-    this.itemService.getAll(this.buscar)
-      .subscribe(data => {
-              this.items = data.products;
-              console.log(this.items);
-            });
+    this.itemsArray = [];
+    this.itemService.API.forEach(item =>{
+      this.itemService.getAll(this.buscar,item)
+        .subscribe(data => {
+              //this.items = data.products;
+              this.itemsArray.push(data.products);
+              console.log(data);
+        });
+        this.itemsArray.forEach(item =>{
+          
+            this.items.push(item);
+       
+        })
+        
+        console.log(this.items);
+    })
+    
+    //this.itemService.getAll(this.buscar)
+    //  .subscribe(data => {
+    //          this.items = data.products;
+    //          console.log(this.items);
+    //        });
   }
 
   onSelected(item: any){
@@ -69,8 +85,10 @@ export class ContenidoComponent implements OnInit {
   filtrarPorCategoria(){
     if(this.categoriaSeleccionada !== null){
       this.items = [];
-      this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe( resultado =>{
-        this.items = resultado.products;
+      this.itemService.API.forEach(item =>{
+          this.itemService.getItemByCategory(this.categoriaSeleccionada,item).subscribe( resultado =>{
+          this.items.push(resultado.products);
+        })
       })
     }
   }
@@ -78,9 +96,11 @@ export class ContenidoComponent implements OnInit {
   filtrarPorMarca(){
     if (this.marcaSeleccionada !== null){
       this.items = [];
-      this.itemService.getAll(this.marcaSeleccionada).subscribe(resultado => {
-        this.items = resultado.products;
-      });
+      this.itemService.API.forEach(item =>{
+        this.itemService.getAll(this.marcaSeleccionada,item).subscribe(resultado => {
+          this.items.push(resultado.products);
+        });
+      })
     }
   }
 
