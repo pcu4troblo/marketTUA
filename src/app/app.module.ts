@@ -16,6 +16,7 @@ import { DetalleCarritoComponent } from './components/detalle-carrito/detalle-ca
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import {ShippingInfoComponent} from './components/shipping-info/shipping-info.component';
+import {OrdersComponent} from './components/orders/orders.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDQ4YDAtPhkkBIu0TWRBnAi-bpBYFjmojM",
@@ -38,7 +39,8 @@ const firebaseConfig = {
     FiltroComponent,
     ContenidoComponent,
     DetalleCarritoComponent,
-    ShippingInfoComponent
+    ShippingInfoComponent,
+    OrdersComponent
   ],
     imports: [
         BrowserModule,
