@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import {Observable} from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -39,16 +39,12 @@ export class UserService {
     return this.http.get<any>(this.APIorders+ "/"+user_name+"/orders");
   }
 
-  /*checkout(typeRequest: string, body: any, idToken: 123): Observable<any> {
-    let url = this.url + '/' + typeRequest;
-    let postData = new FormData();
-    postData = (body);
-    let headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      token: token
-    });
-    return this.http.post(url, postData, {headers});
-  }*/
+  checkout(body: any): Observable<any> {
+    /*let headers = new Headers();
+    headers.append('idToken', '123');
+    let options = new RequestOptions({ headers: headers });*/
+    return this.http.post(this.API, body, {headers: new HttpHeaders().set('idToken', '123')});
+  }
 
   login(): any {
     this.fireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());

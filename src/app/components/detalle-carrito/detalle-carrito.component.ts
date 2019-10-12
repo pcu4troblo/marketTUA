@@ -12,12 +12,14 @@ export class DetalleCarritoComponent implements OnInit {
 
   carrito : Array<CarritoInterface> = [];
   suma: number = 0;
-  
+  cantidad: number = 0;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
     this.getItems();
     this.sumar();
+    this.getQuantity();
   }
 
   onSelected(item: CarritoInterface){
@@ -40,6 +42,13 @@ export class DetalleCarritoComponent implements OnInit {
       this.suma = this.suma + item.price;
       localStorage.setItem("init1", this.suma.toString());
     })
+  }
+
+  getQuantity() {
+    this.carrito.forEach(item => {
+      this.cantidad = this.cantidad + item.quantity;
+    });
+    localStorage.setItem("init2", this.cantidad.toString());
   }
 
   realizarCompra() {
