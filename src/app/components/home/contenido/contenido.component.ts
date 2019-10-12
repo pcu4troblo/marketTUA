@@ -39,17 +39,11 @@ export class ContenidoComponent implements OnInit {
   mostrar() {
     this.items = [];
     this.itemsArray = [];
-    this.itemService.API.forEach(item =>{
-      this.itemService.getAll(this.buscar,item)
+      this.itemService.getAll(this.buscar)
         .subscribe(data => {
               this.items = data.products;
               console.log(data);
         });
-        this.itemsArray.forEach(item =>{
-            this.items.push(item);
-        })
-        console.log(this.items);
-    })
   }
 
   onSelected(item: any){
@@ -76,22 +70,19 @@ export class ContenidoComponent implements OnInit {
   filtrarPorCategoria(){
     if(this.categoriaSeleccionada !== null){
       this.items = [];
-      this.itemService.API.forEach(item =>{
-          this.itemService.getItemByCategory(this.categoriaSeleccionada,item).subscribe( resultado =>{
+          this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe( resultado =>{
           this.items = resultado.products;
         })
-      })
+
     }
   }
 
   filtrarPorMarca(){
     if (this.marcaSeleccionada !== null){
       this.items = [];
-      this.itemService.API.forEach(item =>{
-        this.itemService.getAll(this.marcaSeleccionada,item).subscribe(resultado => {
+        this.itemService.getAll(this.marcaSeleccionada).subscribe(resultado => {
           this.items = resultado.products;
         });
-      })
     }
   }
 
