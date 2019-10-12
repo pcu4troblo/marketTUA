@@ -99,7 +99,7 @@ it('Select click Asus' , () =>{
 });
 
 it('Nav-bar Productos' , () =>{
-  cy.get('nav').find('a#productos').click();
+  cy.get('nav').find('a#productos').should('have.text','Productos').click();
 });
 
 })
@@ -122,8 +122,8 @@ it('Item components exist' , () =>{
   cy.get('p#brand');
   cy.get('p#seller');
   cy.get('p#rating');
-  cy.get('button#add');
-  cy.get('a#carritoButton');
+  cy.get('button#add').should('have.text','Añadir al carrito');
+  cy.get('a#carritoButton')
 });
 
 it('Carrito button click', () => {
@@ -166,7 +166,7 @@ it('Table components exists', () => {
   cy.get('th#price');
   cy.get('th#details');
   cy.get('div#total');
-  cy.get('a#buy');
+  cy.get('a#buy').should('have.text','Realizar Compra');
 });
 })
 
@@ -225,7 +225,18 @@ it('Total label exists', () => {
 
 it('Buy button exists', () => {
   cy.get('button#buy');
-  
+});
+
+it('Buy button click empty input', () => {
+  cy.get('button#buy').click();
+  cy.get('div#directionError').should('have.text','Por favor, ingresa tu dirección');
+  cy.get('div#townError').should('have.text','Por favor, ingresa el municipio');
+  cy.get('div#departamentError').should('have.text','Por favor, ingresa el departamento');
+  cy.get('div#nameError').should('have.text','Por favor, ingresa el nombre de quien va a recibir el pedido');
+  cy.get('div#phoneError').should('have.text','Por favor, ingresa el teléfono');
+  cy.get('div#typeError').should('have.text','Por favor, Selecciona el tipo de envío');
+  cy.get('div#payError').should('have.text','Por favor, Selecciona el pago');
+
 });
 
 })

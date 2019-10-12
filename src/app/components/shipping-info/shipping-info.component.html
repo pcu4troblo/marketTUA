@@ -9,7 +9,7 @@
                         <label id="directionLabel">Dirección de entrega</label>
                         <input id="directionInput" type="text" formControlName="shipment_address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.shipment_address.errors }" />
                         <div *ngIf="submitted && f.shipment_address.errors" class="invalid-feedback">
-                            <div *ngIf="f.shipment_address.errors.required">Por favor, ingresa tu dirección</div>
+                            <div id="directionError" *ngIf="f.shipment_address.errors.required">Por favor, ingresa tu dirección</div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -20,28 +20,28 @@
                         <label id="townLabel">Municipio</label>
                         <input id="townInput" type="text" formControlName="municipality" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.municipality.errors }" />
                         <div *ngIf="submitted && f.municipality.errors" class="invalid-feedback">
-                            <div *ngIf="f.municipality.errors.required">Por favor, ingresa el municipio</div>
+                            <div id="townError" *ngIf="f.municipality.errors.required">Por favor, ingresa el municipio</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label id="departamentLabel">Departamento</label>
                         <input id="departamentInput" class="form-control" formControlName="departament" [ngClass]="{ 'is-invalid': submitted && f.departament.errors }"/>
                         <div *ngIf="submitted && f.departament.errors" class="invalid-feedback">
-                            <div *ngIf="f.departament.errors.required">Por favor, ingresa el departamento</div>
+                            <div id="departamentError" *ngIf="f.departament.errors.required">Por favor, ingresa el departamento</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label id="nameLabel">Nombre de la persona que va a recibir</label>
                         <input id="nameInput" [disabled]=true class="form-control" [value]="user.name" formControlName="user_name" [ngClass]="{ 'is-invalid': submitted && f.user_name.errors }"/>
                         <div *ngIf="submitted && f.user_name.errors" class="invalid-feedback">
-                            <div *ngIf="f.user_name.errors.required">Por favor, ingresa el nombre de quien va a recibir el pedido</div>
+                            <div id="nameError" *ngIf="f.user_name.errors.required">Por favor, ingresa el nombre de quien va a recibir el pedido</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label id="phoneLabel">Teléfono</label>
                         <input id="phoneInput" class="form-control" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
                         <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                            <div *ngIf="f.phone.errors.required">Por favor, ingresa el teléfono</div>
+                            <div id="phoneError" *ngIf="f.phone.errors.required">Por favor, ingresa el teléfono</div>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
 
                         </select>
                         <div *ngIf="submitted && f.shippingType.errors" class="invalid-feedback">
-                            <div *ngIf="f.shippingType.errors.required">Por favor, Selecciona el tipo de envío</div>
+                            <div id="typeError" *ngIf="f.shippingType.errors.required">Por favor, Selecciona el tipo de envío</div>
                         </div>
                     </div>
 
@@ -62,7 +62,7 @@
                             <option value="contraentrega">Pago Contraentrega</option>
                         </select>
                         <div *ngIf="submitted && f.payment_method.errors" class="invalid-feedback">
-                            <div *ngIf="f.payment_method.errors.required">Por favor, Selecciona el pago</div>
+                            <div id="payError"*ngIf="f.payment_method.errors.required">Por favor, Selecciona el pago</div>
                         </div>
                     </div>
                 </form>
