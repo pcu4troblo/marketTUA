@@ -5,21 +5,21 @@
     <div class="col-md-8">
       <form #filtro="ngForm">
         <div>
-          <select [(ngModel)]="categoriaSeleccionada" placeholder="Categoria" (change)="filtrarPorCategoria()" name="categories" >
+          <select [(ngModel)]="categoriaSeleccionada" id="category" placeholder="Categoria" (change)="filtrarPorCategoria()" name="categories" >
             <option *ngFor="let categoria of categorias" value="{{categoria.category}}">{{categoria.category}}</option>
           </select>
         </div>
         <div>
-            <select [(ngModel)]="marcaSeleccionada" placeholder="Marca" (change)="filtrarPorMarca()" name="brands" >
+            <select [(ngModel)]="marcaSeleccionada" id="brand" placeholder="Marca" (change)="filtrarPorMarca()" name="brands" >
               <option *ngFor="let marca of marcas" value="{{marca.brand}}">{{marca.brand}}</option>
             </select>
           </div>
         <div class="form-group">
           <div style="float: left">
-          <input class="form-control mr-sm-2 bg-dark text-white" name="buscar" type="search" size="70" placeholder="Ingrese búsqueda" aria-label="Search" [(ngModel)]="buscar">
+          <input class="form-control mr-sm-2 bg-dark text-white" id="buscar" name="buscar" type="search" size="70" placeholder="Ingrese búsqueda" aria-label="Search" [(ngModel)]="buscar">
           </div>
           <div style="float: right">
-            <button type="button" class="btn btn-dark sm btnBusqueda" (click)="mostrar()" ><i class="fas fa-search"></i></button>
+            <button type="button" id="buscar" class="btn btn-dark sm btnBusqueda" (click)="mostrar()" ><i class="fas fa-search"></i></button>
           </div>
         </div>
       </form>
@@ -28,12 +28,12 @@
 
     <div class="row results">
       <div class="col-lg-3 col-md-6" *ngFor="let item of items">
-        <div class="card border-primary mb-3 contenido" style="width: 100%; height: 95%;">
+        <div class="card border-primary mb-3 contenido" id="card" style="width: 100%; height: 95%;">
+          <div class="card-body" id="body">
+          <h5 class="card-title" id="title" (click)="onSelected(item)">{{item.name}}</h5>
           <div class="card-body">
-          <h5 class="card-title" (click)="onSelected(item)">{{item.name}}</h5>
-          <div class="card-body">
-            <img src="{{item.thumbnail}}"  alt="..." style="width: 50%; height: 50%;">
-            <p class="card-text precio" style="padding-top: 15px">{{item.price | currency:"COP":"symbol-narrow"}}</p><br>
+            <img id="img" src="{{item.thumbnail}}"  alt="..." style="width: 50%; height: 50%;">
+            <p id="price" class="card-text precio" style="padding-top: 15px">{{item.price | currency:"COP":"symbol-narrow"}}</p><br>
             <p id="item">{{item.seller.seller_name}}</p>
           </div>
         </div>

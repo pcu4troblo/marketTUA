@@ -1,24 +1,24 @@
 
 <div class="container section">
-  <div class="row">
+  <div id='body' class="row">
     <div class="col-lg-4 carou">
       <ngb-carousel *ngFor="let img of images">
         <ng-template ngbSlide>
-          <div class="picsum-img">
-            <img src="{{img.url}}" style="max-width: 90%; max-height: 60%;">
+          <div class="picsum-img" id="pic">
+            <img id="img" src="{{img.url}}" style="max-width: 90%; max-height: 60%;">
           </div>
         </ng-template>
       </ngb-carousel>
     </div>
     <div class="col-lg-4 description">
-   <h2>{{item.name}}</h2>
-   <p>{{item.description}}</p>
-   <p class="price">{{item.price | currency:"COP":"symbol-narrow"}}</p>
-   <p><span>Sold Units:</span> {{item.sold_units}}</p>
-   <p><span>Marca:</span> {{item.brand}}</p>
-   <p><span>Vendedor:</span> {{item.seller.seller_name}}</p>
-   <p><span>Rating:</span> {{item.rating}}</p>
-   <button (click)="agregarCarrito()" type="button" class="btn btn-default cart">Añadir al carrito</button>
+   <h2 id="name">{{item.name}}</h2>
+   <p id="description">{{item.description}}</p>
+   <p id='price' class="price">{{item.price | currency:"COP":"symbol-narrow"}}</p>
+   <p id="sold"><span>Sold Units:</span> {{item.sold_units}}</p>
+   <p id="brand"><span>Marca:</span> {{item.brand}}</p>
+   <p id="seller"><span>Vendedor:</span> {{item.seller.seller_name}}</p>
+   <p id="rating"><span>Rating:</span> {{item.rating}}</p>
+   <button id="add" (click)="agregarCarrito()" type="button" class="btn btn-default cart">Añadir al carrito</button>
     </div>
     <div class="col-lg-4">
       <app-carrito [itemsCarrito]="carrito" [tablaOn]="tablaOn"></app-carrito>
