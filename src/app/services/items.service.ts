@@ -5,14 +5,14 @@ import { itemsInterface } from '../interfaces/itemsInterface';
 
 @Injectable({providedIn: 'root'})
 export class ItemsService {
-  //vpublic API: Array<string> = ['https://marketuaflask.herokuapp.com','http://marketua-develop-api.herokuapp.com','https://marketua-go-api.herokuapp.com'];
+  public API: Array<string> = ['https://marketuaflask.herokuapp.com','http://marketua-develop-api.herokuapp.com','https://marketua-go-api.herokuapp.com'];
   //Mercadolibre
   //public API = 'https://api.mercadolibre.com';
 
   //Flask
-  //public APIHEROKU = 'https://marketuaflask.herokuapp.com'
+  public APIHEROKU = 'https://marketuaflask.herokuapp.com'
   //Ruby
-  public APIHEROKU = 'http://marketua-develop-api.herokuapp.com';
+  //public API = 'http://marketua-develop-api.herokuapp.com';
   //Go
   //public API = 'https://marketua-go-api.herokuapp.com';
 
@@ -20,17 +20,17 @@ export class ItemsService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(filtro: string): Observable<any> {
+  getAll(filtro: string, url: string): Observable<any> {
     
-    return this.http.get(this.APIHEROKU + "/search?q=" + filtro);
+    return this.http.get(url+ "/search?q=" + filtro);
   }
 
   getItemById(id: string): Observable<any>{
     return this.http.get(this.APIHEROKU+ "/items/" + id);
   }
 
-  getItemByCategory(category: string): Observable<any>{
-    return this.http.get(this.APIHEROKU + "/items/category/" + category);
+  getItemByCategory(category: string, url: string): Observable<any>{
+    return this.http.get(url + "/items/category/" + category);
   }
 
  }
