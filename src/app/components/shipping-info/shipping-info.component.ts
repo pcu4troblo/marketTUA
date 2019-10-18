@@ -14,6 +14,7 @@ export class ShippingInfoComponent implements OnInit {
   submitted = false;
   total: string;
   success = false;
+  items: Array<any> = [];
   user: any;
   carrito : Array<CarritoInterface> = [];
   body: {  };
@@ -28,31 +29,31 @@ export class ShippingInfoComponent implements OnInit {
     this.cantidad = localStorage.getItem("init2");
     this.user = localStorage.getItem("user");
     this.carrito = JSON.parse( localStorage.getItem("carrito"));
-
+    this.carrito.forEach((item, index) =>{
+      this.items[index] = {
+        Item_id : item.id,
+        Quantity: item.quantity,
+        Backend: "GO"
+      }
+    });
     this.shipping = this.formBuilder.group({
       'shipment_address': ['', Validators.required, Validators.minLength(4)],
-      'apto': ['', Validators.required, Validators.minLength(3)],
-      'municipality': ['', Validators.required, Validators.minLength(4)],
-      'departament': ['', Validators.required, Validators.minLength(4)],
-      'user_name': ['', Validators.required, Validators.minLength(4)],
-      'phone': ['', Validators.required, Validators.minLength(7)],
-      'shippingType': ['', Validators.required],
+      'username': ['', Validators.required, Validators.minLength(4)],
       'payment_method': ['', Validators.required],
-      'quantity': [this.cantidad, Validators.required],
-      'total': [this.total, Validators.required]
+      'items': [this.items, Validators.required],
+      'total': [+this.total, Validators.required]
     });
   }
 
   get f() { return this.shipping.controls; }
 
   checkout() {
-    this.carrito.forEach(item => {
-      this.userService.checkout(this.shipping.value).subscribe( resultado =>{
-        localStorage.setItem("userName", this.shipping.value.user_name);
+      console.log(this.shipping.value);
+      this.userService.checkout(this.shipping.value).subscribe( resultado => {
         this.success = true;
-        console.log('Información almacenada con éxito');
-      })
-    });
+        console.log(resultado);
+      });
+    
   }
 
   onSubmit() {
@@ -61,5 +62,7 @@ export class ShippingInfoComponent implements OnInit {
       return;
     }
     this.checkout();
+    console.log(this.shipping.value);
+    
   }
 }

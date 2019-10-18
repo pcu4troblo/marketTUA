@@ -12,9 +12,9 @@ export class ItemsService {
   //Flask
   //public APIHEROKU = 'https://marketuaflask.herokuapp.com'
   //Ruby
-  public APIHEROKU = 'http://marketua-develop-api.herokuapp.com';
+  //public APIHEROKU = 'http://marketua-develop-api.herokuapp.com';
   //Go
-  //public API = 'https://marketua-go-api.herokuapp.com';
+  public APIHEROKU = 'https://marketua-go-api.herokuapp.com';
 
 
   constructor(private http: HttpClient) {

@@ -13,48 +13,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Piso o departamento</label>
-                        <input type="text" formControlName="apto" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Municipio</label>
-                        <input type="text" formControlName="municipality" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.municipality.errors }" />
-                        <div *ngIf="submitted && f.municipality.errors" class="invalid-feedback">
-                            <div *ngIf="f.municipality.errors.required">Por favor, ingresa el municipio</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Departamento</label>
-                        <input class="form-control" formControlName="departament" [ngClass]="{ 'is-invalid': submitted && f.departament.errors }"/>
-                        <div *ngIf="submitted && f.departament.errors" class="invalid-feedback">
-                            <div *ngIf="f.departament.errors.required">Por favor, ingresa el departamento</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Nombre de la persona que va a recibir</label>
-                        <input [disabled]=true class="form-control" formControlName="user_name" [ngClass]="{ 'is-invalid': submitted && f.user_name.errors }"/>
+                        <label>Nombre de Usuario</label>
+                        <input [disabled]=true class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.user_name.errors }"/>
                         <div *ngIf="submitted && f.user_name.errors" class="invalid-feedback">
                             <div *ngIf="f.user_name.errors.required">Por favor, ingresa el nombre de quien va a recibir el pedido</div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Teléfono</label>
-                        <input class="form-control" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
-                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                            <div *ngIf="f.phone.errors.required">Por favor, ingresa el teléfono</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="shippingType"> Tipo de envío</label>
-                        <select class="form-control" formControlName="shippingType" [ngClass]="{ 'is-invalid': submitted && f.shippingType.errors }">
-                            <option value="domicilio">Entrega a domicilio</option>
-                        </select>
-                        <div *ngIf="submitted && f.shippingType.errors" class="invalid-feedback">
-                            <div *ngIf="f.shippingType.errors.required">Por favor, Selecciona el tipo de envío</div>
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <label for="payment_method"> Pago</label>
                         <select class="form-control" formControlName="payment_method" [ngClass]="{ 'is-invalid': submitted && f.payment_method.errors }">

@@ -29,6 +29,7 @@ export class DetalleItemComponent implements OnInit {
     if(JSON.parse( localStorage.getItem("carrito")))
     this.carrito = JSON.parse( localStorage.getItem("carrito"));
   }
+  
   agregarCarrito(){
     let itemCarrito:CarritoInterface = {
       name : this.item.name,
