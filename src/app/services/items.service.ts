@@ -27,8 +27,8 @@ export class ItemsService {
     return this.http.get(url+ "/search?q=" + filtro);
   }
 
-  getItemById(id: string): Observable<any>{
-    return this.http.get(this.APIHEROKU+ "/items/" + id);
+  getItemById(id: string, url: string): Observable<any>{
+    return this.http.get(url + "/items/" + id);
   }
 
   getItemByCategory(category: string, url: string): Observable<any>{
