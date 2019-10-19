@@ -4,5 +4,4 @@ export interface OrderInterface {
     quantity: number;
     shipment_address: String;
     total: number;
-    user_name: string;
 }

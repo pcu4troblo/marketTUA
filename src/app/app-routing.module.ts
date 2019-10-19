@@ -28,7 +28,7 @@ const routes: Routes = [
     component: ShippingInfoComponent
   },
   {
-    path: "pedidos",
+    path: "pedidos/:user",
     component: OrdersComponent
   }
 ];

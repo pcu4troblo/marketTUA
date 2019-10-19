@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CarritoInterface } from 'src/app/interfaces/carrito-interface';
-import { itemsInterface } from 'src/app/interfaces/itemsInterface';
 import { Router } from '@angular/router';
+import {FormBuilder,  FormGroup} from '@angular/forms';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-detalle-carrito',
@@ -11,12 +12,34 @@ import { Router } from '@angular/router';
 export class DetalleCarritoComponent implements OnInit {
 
   carrito : Array<CarritoInterface> = [];
+  user: any;
+  items: Array<any> = [];
   suma: number = 0;
   cantidad: number = 0;
+  success: boolean = false;
+  carritoForm: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private formBuilder: FormBuilder,
+    private itemService: ItemsService) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.carrito = JSON.parse( localStorage.getItem("carrito"));
+    this.carrito.forEach((item, index) =>{
+      this.items[index] = {
+        item_id : String(item.id),
+        quantity: String(item.quantity),
+        backend: "flask"
+      }
+    });
+
+    this.carritoForm = this.formBuilder.group({
+      'username': [this.user.name],
+      'items': [this.items],
+      
+    });
+
     this.getItems();
     this.sumar();
     this.getQuantity();
@@ -53,5 +76,17 @@ export class DetalleCarritoComponent implements OnInit {
 
   realizarCompra() {
     this.router.navigateByUrl("/envio");
+  }
+
+  guardarCarrito(){
+    this.itemService.saveCart(this.carritoForm.value).subscribe(res => {
+      console.log(res);
+      this.success = true;
+    });
+    
+  }
+
+  compartirCarrito(){
+
   }
 }

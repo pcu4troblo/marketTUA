@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder,  FormGroup} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {CarritoInterface} from '../../interfaces/carrito-interface';
+import { itemsInterface } from 'src/app/interfaces/itemsInterface';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-shipping-info',
@@ -16,29 +18,30 @@ export class ShippingInfoComponent implements OnInit {
   success = false;
   items: Array<any> = [];
   user: any;
+  username: any;
   carrito : Array<CarritoInterface> = [];
   body: {  };
   cantidad: any = 0;
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private itemService: ItemsService) {
   }
 
   ngOnInit() {
     this.total = localStorage.getItem("init1");
     this.cantidad = localStorage.getItem("init2");
-    this.user = localStorage.getItem("user");
+    this.user = JSON.parse(localStorage.getItem("user"));
     this.carrito = JSON.parse( localStorage.getItem("carrito"));
     this.carrito.forEach((item, index) =>{
       this.items[index] = {
         item_id : String(item.id),
         quantity: String(item.quantity),
-        backend: "GO"
+        backend: "flask"
       }
     });
     this.shipping = this.formBuilder.group({
       'shipment_address': [''],
-      'username': [''],
+      'username': [this.user.name],
       'payment_method': [''],
       'items': [this.items],
       'total': [+this.total]
@@ -50,11 +53,9 @@ export class ShippingInfoComponent implements OnInit {
 
 
   onSubmit() {
-    
-    console.log(this.shipping.value);
-      this.userService.checkout(this.shipping.value).subscribe( resultado => {
+      this.itemService.checkout(this.shipping.value).subscribe( resultado => {
         this.success = true;
-        console.log(resultado);
+        localStorage.removeItem("carrito")
       });
     
   }

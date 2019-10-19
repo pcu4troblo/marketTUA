@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import {OrderInterface} from '../../interfaces/order';
 import {UserService} from '../../services/user.service';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-orders',
@@ -10,20 +11,23 @@ import {UserService} from '../../services/user.service';
 })
 export class OrdersComponent implements OnInit {
 
-  orders : Array<OrderInterface> = [];
+  orders : any = [];
   user: any;
 
-  constructor(private userService: UserService
+  constructor(
+    private itemService: ItemsService
   ) { }
 
   ngOnInit() {
-    this.user = localStorage.getItem("userName");
+    this.user = JSON.parse(localStorage.getItem("user"));
     this.getOrders();
+
   }
 
   getOrders() {
-    //parametro quemado por el momento
-    this.userService.getOrders(this.user).subscribe( resultado =>{
+    this.itemService.getOrders(this.user.name).subscribe( resultado =>{
+      console.log(resultado.orders);
+      
       this.orders = resultado.orders;
     })
   }

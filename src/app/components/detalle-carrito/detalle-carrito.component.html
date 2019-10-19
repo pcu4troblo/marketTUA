@@ -36,10 +36,15 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-5">
+      
+      <div class="col-sm-10 buttons form-group">
+          <div *ngIf="success" class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              Carrito con éxito.
+          </div>
 
-      </div>
-      <div class="col-sm-5">
+        <a class="btn cart" *ngIf="!success" (click)="guardarCarrito()">Guardar Carrito</a>
+        <a class="btn cart" (click)="compartirCarrito()">Compartir Carrito</a>
         <a class="btn cart" (click)="realizarCompra()">Realizar Compra</a>
       </div>
     </div>

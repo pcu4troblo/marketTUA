@@ -35,4 +35,19 @@ export class ItemsService {
     return this.http.get(this.APIHEROKU + "/items/category/" + category);
   }
 
+  saveCart(cart: any){
+    return this.http.post(this.APIHEROKU + "/save-cart/", cart);
+  }
+
+  shareCart(user: any){
+    return this.http.get(this.APIHEROKU+"/share-cart/"+ user)
+  }
+
+  getOrders(user_name: string): Observable<any> {
+    return this.http.get<any>(this.APIHEROKU+"/orders/"+user_name);
+  }
+
+  checkout(body: any): Observable<any> {
+    return this.http.post(this.APIHEROKU+"/checkout/", body);
+  }
  }

@@ -11,17 +11,15 @@
               <th scope="col">Cantidad</th>
               <th scope="col-sm-15">Dirección de envío</th>
               <th scope="col-sm-15">Total a pagar</th>
-              <th scope="col-sm-15">Quien recibe</th>
             </tr>
           </thead>
           <tbody class="thead-light">
-            <tr *ngFor="let item of orders">
-              <td id="item_id">{{item.item_id}}</td>
-              <td id="payment_method">{{item.payment_method}}</td>
-              <td id="quantity">{{item.quantity}}</td>
-              <td id="shipment_address">{{item.shipment_address}}</td>
-              <td id="total">{{item.total}}</td>
-              <td id="user_name">{{item.user_name}}</td>
+            <tr *ngFor="let order of orders">
+              <td id="item_id">{{order.items[0].item_id || async}}</td>
+              <td id="payment_method">{{order.payment_method}}</td>
+              <td id="quantity">{{order.items[0].quantity}}</td>
+              <td id="shipment_address">{{order.shipment_address}}</td>
+              <td id="total">{{order.total}}</td>
             </tr>
           </tbody>
         </table>

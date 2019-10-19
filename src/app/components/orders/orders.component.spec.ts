@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetalleCarritoComponent } from './orders.component';
+import { DetalleCarritoComponent } from '../detalle-carrito/detalle-carrito.component';
 
 describe('DetalleCarritoComponent', () => {
   let component: DetalleCarritoComponent;

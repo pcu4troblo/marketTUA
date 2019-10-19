@@ -20,14 +20,11 @@ export class DetalleItemComponent implements OnInit {
 
   ngOnInit() {
     let id  = this.route.snapshot.params["id"];
-    this.itemService.API.forEach(item =>{
-
-      this.itemService.getItemById(id, item).subscribe(data => {
+      this.itemService.getItemById(id).subscribe(data => {
        this.item = data;
        console.log(this.item);
        this.images = data.images;
     });
-    })
 
 
     if(JSON.parse( localStorage.getItem("carrito")))

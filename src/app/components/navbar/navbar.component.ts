@@ -16,13 +16,12 @@ export class NavbarComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit() {
-    this.loggedIn();
+    this.getuser();
   }
 
-  Onlogin(){
+  async Onlogin(){
     this.userService.login();
-    this.user = this.userService.usuario;
-    console.log(this.user);
+    await (this.getuser());
   }
 
   Onlogout(){
@@ -30,11 +29,11 @@ export class NavbarComponent implements OnInit {
     this.user = {};
   }
 
-  loggedIn(){
-    this.logedIn = this.userService.logedIn();
+  async getuser(){
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   goOrders() {
-    this.router.navigateByUrl("/pedidos");
+    this.router.navigateByUrl("/pedidos/" + this.user.name );
   }
 }

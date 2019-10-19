@@ -10,7 +10,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class UserService {
 
   public usuario : any = {};
-
   //Flask checkout
   public API = 'https://marketuaflask.herokuapp.com/checkout/'
 
@@ -18,7 +17,7 @@ export class UserService {
   //public API = 'https://marketua-go-api.herokuapp.com/checkout'
 
   //Flask getOrders
-  public APIorders = 'https://marketuaflask.herokuapp.com/user'
+  public APIorders = 'http://marketuaflask.herokuapp.com/orders'
 
   constructor(private fireAuth: AngularFireAuth,
               private http: HttpClient) {
@@ -38,17 +37,6 @@ export class UserService {
     })
   }
 
-  getOrders(user_name: string): Observable<any> {
-    return this.http.get<any>(this.APIorders+ "/"+user_name+"/orders");
-  }
-
-  checkout(body: any): Observable<any> {
-    /*let headers = new Headers();
-    headers.append('idToken', '123');
-    let options = new RequestOptions({ headers: headers });*/
-    return this.http.post(this.API, body/*, {headers: new HttpHeaders().set('idToken', '123')}*/);
-  }
-
   login(): any {
     this.fireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
     return this.usuario;
@@ -62,5 +50,6 @@ export class UserService {
   logedIn(){
     return !!localStorage.getItem('user')
   }
+
 
 }
