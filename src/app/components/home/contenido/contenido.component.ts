@@ -16,7 +16,7 @@ export class ContenidoComponent implements OnInit {
   items: Array<any> = [];
 
   itemsArray: Array<any> = [];
-  
+
   seller: any;
 
   buscar: string;
@@ -29,64 +29,69 @@ export class ContenidoComponent implements OnInit {
 
   marcaSeleccionada: string = null;
 
-  constructor(private itemService: ItemsService, private categoriaService: CategoriaService, private marcaService: MarcaService , private router: Router) { }
+  constructor(private itemService: ItemsService, private categoriaService: CategoriaService, private marcaService: MarcaService, private router: Router) { }
 
   ngOnInit() {
     this.obtenerCategorias();
     this.obtenerMarcas();
   }
-    
+
   mostrar() {
     this.items = [];
     this.itemsArray = [];
-      this.itemService.getAll(this.buscar)
-        .subscribe(data => {
-              this.items = data.products;
-              console.log(data);
+    this.itemService.API.forEach(url => {
+      this.itemService.getAll(url, this.buscar)
+      .subscribe(data => {
+        this.items = data.products;
+        this.items.forEach(item => {
+          this.itemsArray.push(item);
         });
-        this.itemsArray.forEach(item =>{
-            this.items.push(item);
-        })
-        console.log(this.items);
+      });
+    });
+    /*this.itemsArray.forEach(item =>{
+        this.items.push(item);
+    })*/
+    console.log(this.itemsArray);
+
   }
 
-  onSelected(item: any){
+  onSelected(item: any) {
     this.router.navigateByUrl("/items/" + item.id);
   }
 
-  onKeydown(event){
+  onKeydown(event) {
     this.mostrar();
     console.log(event);
-    
+
   }
-  obtenerCategorias(){
-    this.categoriaService.categories().subscribe(resultado =>{
+  obtenerCategorias() {
+    this.categoriaService.categories().subscribe(resultado => {
       this.categorias = resultado.data;
     });
   }
 
-  obtenerMarcas(){
+  obtenerMarcas() {
     this.marcaService.brands().subscribe(resultado => {
       this.marcas = resultado.brands;
     });
   }
 
-  filtrarPorCategoria(){
-    if(this.categoriaSeleccionada !== null){
+  filtrarPorCategoria() {
+    if (this.categoriaSeleccionada !== null) {
       this.items = [];
-          this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe( resultado =>{
-          this.items = resultado.products;
-        })
+      this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe(resultado => {
+        this.items = resultado.products;
+      })
     }
   }
 
-  filtrarPorMarca(){
-    if (this.marcaSeleccionada !== null){
+  /*filtrarPorMarca() {
+    if (this.marcaSeleccionada !== null) {
       this.items = [];
-        this.itemService.getAll(this.marcaSeleccionada).subscribe(resultado => {
-          this.items = resultado.products;
-        });
+      this.itemService.getAll(this.marcaSeleccionada).subscribe(resultado => {
+        this.items = resultado.products;
+      });
     }
-  }
+  }*/
 
 }

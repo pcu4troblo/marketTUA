@@ -22,13 +22,13 @@ export class ItemsService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(filtro: string): Observable<any> {
+  getAll(url: string, filtro: string): Observable<any> {
     
-    return this.http.get(this.APIHEROKU+ "/search?q=" + filtro);
+    return this.http.get(url + "/search?q=" + filtro);
   }
 
-  getItemById(id: string): Observable<any>{
-    return this.http.get(this.APIHEROKU + "/items/" + id);
+  getItemById(url: string, id: string): Observable<any>{
+    return this.http.get(url + "/items/" + id);
   }
 
   getItemByCategory(category: string): Observable<any>{

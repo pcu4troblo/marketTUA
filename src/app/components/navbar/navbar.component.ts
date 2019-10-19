@@ -19,17 +19,17 @@ export class NavbarComponent implements OnInit {
     this.getuser();
   }
 
-  async Onlogin(){
+  Onlogin(){
     this.userService.login();
-    await (this.getuser());
+     this.getuser();
   }
 
   Onlogout(){
     this.userService.logout();
-    this.user = {};
+    this.user = null;
   }
 
-  async getuser(){
+  getuser(){
     this.user = JSON.parse(localStorage.getItem('user'));
   }
 

@@ -10,51 +10,60 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DetalleItemComponent implements OnInit {
 
-  tablaOn : boolean;
-  item : any = {};
-  carrito : Array<CarritoInterface> = [];
+  tablaOn: boolean;
+  item: any = {};
+  carrito: Array<CarritoInterface> = [];
   images: Array<any> = [];
 
   constructor(private itemService: ItemsService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    let id  = this.route.snapshot.params["id"];
-      this.itemService.getItemById(id).subscribe(data => {
-       this.item = data;
-       console.log(this.item);
-       this.images = data.images;
+    let id = this.route.snapshot.params["id"];
+
+    this.itemService.API.forEach(url => {
+      this.itemService.getItemById(url, id).subscribe(data => {
+        this.item = data;
+        console.log(this.item);
+        this.images = data.images;
+      },
+      err => {
+        console.log( 
+          err
+        );
+        
+      });
     });
 
 
-    if(JSON.parse( localStorage.getItem("carrito")))
-    this.carrito = JSON.parse( localStorage.getItem("carrito"));
+    if (JSON.parse(localStorage.getItem("carrito")))
+      this.carrito = JSON.parse(localStorage.getItem("carrito"));
   }
-  
-  agregarCarrito(){
-    let itemCarrito:CarritoInterface = {
-      name : this.item.name,
-      price : this.item.price,
-      id : this.item.id,
-      img : this.item.thumbnail,
+
+  agregarCarrito() {
+    let itemCarrito: CarritoInterface = {
+      name: this.item.name,
+      price: this.item.price,
+      id: this.item.id,
+      img: this.item.thumbnail,
       quantity: 1
     }
 
     let isItemInCar: boolean = false;
 
     this.carrito.forEach(itemInCar => {
-      if(itemInCar.name == this.item.name){
+      if (itemInCar.name == this.item.name) {
         itemInCar.price = itemInCar.price + this.item.price;
         itemInCar.quantity = itemInCar.quantity + 1;
         isItemInCar = true;
       }
     })
-    
-    if(!isItemInCar){
-      this.carrito.push(itemCarrito);  
+
+    if (!isItemInCar) {
+      this.carrito.push(itemCarrito);
     }
-    
-    localStorage.setItem("carrito" , JSON.stringify(this.carrito));
+
+    localStorage.setItem("carrito", JSON.stringify(this.carrito));
     this.tablaOn = true;
   }
 

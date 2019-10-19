@@ -13,6 +13,7 @@ export class OrdersComponent implements OnInit {
 
   orders : any = [];
   user: any;
+  
 
   constructor(
     private itemService: ItemsService
@@ -27,7 +28,6 @@ export class OrdersComponent implements OnInit {
   getOrders() {
     this.itemService.getOrders(this.user.name).subscribe( resultado =>{
       console.log(resultado.orders);
-      
       this.orders = resultado.orders;
     })
   }
