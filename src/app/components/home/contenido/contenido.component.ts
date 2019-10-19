@@ -32,13 +32,14 @@ export class ContenidoComponent implements OnInit {
   constructor(private itemService: ItemsService, private categoriaService: CategoriaService, private marcaService: MarcaService , private router: Router) { }
 
   ngOnInit() {
+    this.obtenerCategorias();
+    this.obtenerMarcas();
   }
     
   mostrar() {
     this.items = [];
     this.itemsArray = [];
-    this.itemService.API.forEach(item =>{
-      this.itemService.getAll(this.buscar,item)
+      this.itemService.getAll(this.buscar)
         .subscribe(data => {
               this.items = data.products;
               console.log(data);
@@ -47,7 +48,6 @@ export class ContenidoComponent implements OnInit {
             this.items.push(item);
         })
         console.log(this.items);
-    })
   }
 
   onSelected(item: any){
@@ -74,22 +74,18 @@ export class ContenidoComponent implements OnInit {
   filtrarPorCategoria(){
     if(this.categoriaSeleccionada !== null){
       this.items = [];
-      this.itemService.API.forEach(item =>{
-          this.itemService.getItemByCategory(this.categoriaSeleccionada,item).subscribe( resultado =>{
+          this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe( resultado =>{
           this.items = resultado.products;
         })
-      })
     }
   }
 
   filtrarPorMarca(){
     if (this.marcaSeleccionada !== null){
       this.items = [];
-      this.itemService.API.forEach(item =>{
-        this.itemService.getAll(this.marcaSeleccionada,item).subscribe(resultado => {
+        this.itemService.getAll(this.marcaSeleccionada).subscribe(resultado => {
           this.items = resultado.products;
         });
-      })
     }
   }
 

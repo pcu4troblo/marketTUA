@@ -22,17 +22,17 @@ export class ItemsService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(filtro: string, url: string): Observable<any> {
+  getAll(filtro: string): Observable<any> {
     
-    return this.http.get(url+ "/search?q=" + filtro);
+    return this.http.get(this.APIHEROKU+ "/search?q=" + filtro);
   }
 
-  getItemById(id: string, url: string): Observable<any>{
-    return this.http.get(url + "/items/" + id);
+  getItemById(id: string): Observable<any>{
+    return this.http.get(this.APIHEROKU + "/items/" + id);
   }
 
-  getItemByCategory(category: string, url: string): Observable<any>{
-    return this.http.get(url + "/items/category/" + category);
+  getItemByCategory(category: string): Observable<any>{
+    return this.http.get(this.APIHEROKU + "/items/category/" + category);
   }
 
  }
