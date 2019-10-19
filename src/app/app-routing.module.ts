@@ -20,7 +20,7 @@ const routes: Routes = [
   component: DetalleItemComponent
   },
   {
-    path: "carrito",
+    path: "carrito/:user",
     component: DetalleCarritoComponent
   },
   {

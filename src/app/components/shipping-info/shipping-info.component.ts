@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,  FormGroup} from '@angular/forms';
-import {UserService} from '../../services/user.service';
 import {CarritoInterface} from '../../interfaces/carrito-interface';
-import { itemsInterface } from 'src/app/interfaces/itemsInterface';
 import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
@@ -22,6 +20,7 @@ export class ShippingInfoComponent implements OnInit {
   carrito : Array<CarritoInterface> = [];
   body: {  };
   cantidad: any = 0;
+  logedIn: any;
 
   constructor(private formBuilder: FormBuilder,
               private itemService: ItemsService) {
@@ -48,15 +47,16 @@ export class ShippingInfoComponent implements OnInit {
     });
   }
 
-  
-
-
-
   onSubmit() {
+    console.log(localStorage.getItem("user"));
+    if (localStorage.getItem("user") != null){
       this.itemService.checkout(this.shipping.value).subscribe( resultado => {
         this.success = true;
         localStorage.removeItem("carrito")
       });
+    }else{
+      this.logedIn = false;
+    }
     
   }
 }

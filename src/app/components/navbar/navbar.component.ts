@@ -36,4 +36,13 @@ export class NavbarComponent implements OnInit {
   goOrders() {
     this.router.navigateByUrl("/pedidos/" + this.user.name );
   }
+
+  goToCart(){
+    if(this.user != null){
+    this.router.navigateByUrl("/carrito/" + this.user.name );
+  }else{
+    this.router.navigateByUrl("/carrito/" + "unlogedPerson");
+  };
+}
+
 }

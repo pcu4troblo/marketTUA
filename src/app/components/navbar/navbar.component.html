@@ -10,7 +10,7 @@
         <a class="nav-link" id='inicio' href="/">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id='carrito' href="/carrito">Carrito</a>
+        <a class="nav-link" id='carrito' (click)="goToCart()">Carrito</a>
       </li>
       <li *ngIf="user != null" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"

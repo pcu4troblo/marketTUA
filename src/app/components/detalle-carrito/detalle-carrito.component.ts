@@ -12,7 +12,7 @@ import { ItemsService } from 'src/app/services/items.service';
 export class DetalleCarritoComponent implements OnInit {
 
   carrito : Array<CarritoInterface> = [];
-  user: any;
+  user: any = {};
   items: Array<any> = [];
   suma: number = 0;
   cantidad: number = 0;
@@ -24,7 +24,12 @@ export class DetalleCarritoComponent implements OnInit {
     private itemService: ItemsService) { }
 
   ngOnInit() {
+    if(localStorage.getItem('user') != null){
     this.user = JSON.parse(localStorage.getItem('user'));
+    }else{
+      this.user.name = "unlogedPerson";
+    }
+    
     this.carrito = JSON.parse( localStorage.getItem("carrito"));
     this.carrito.forEach((item, index) =>{
       this.items[index] = {
@@ -87,6 +92,16 @@ export class DetalleCarritoComponent implements OnInit {
   }
 
   compartirCarrito(){
-
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = window.location.href;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 }
