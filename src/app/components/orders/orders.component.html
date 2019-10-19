@@ -15,7 +15,7 @@
           </thead>
           <tbody class="thead-light">
             <tr *ngFor="let order of orders">
-              <td id="item_id">{{order.items[0].item_id || async}}</td>
+              <td id="item_id">{{order.items[0].item_id}}</td>
               <td id="payment_method">{{order.payment_method}}</td>
               <td id="quantity">{{order.items[0].quantity}}</td>
               <td id="shipment_address">{{order.shipment_address}}</td>
