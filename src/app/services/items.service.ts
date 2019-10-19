@@ -31,8 +31,8 @@ export class ItemsService {
     return this.http.get(url + "/items/" + id);
   }
 
-  getItemByCategory(category: string): Observable<any>{
-    return this.http.get(this.APIHEROKU + "/items/category/" + category);
+  getItemByCategory(url: string, category: string): Observable<any>{
+    return this.http.get(url + "/items/category/" + category);
   }
 
   saveCart(cart: any){

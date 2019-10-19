@@ -41,18 +41,13 @@ export class ContenidoComponent implements OnInit {
     this.itemsArray = [];
     this.itemService.API.forEach(url => {
       this.itemService.getAll(url, this.buscar)
-      .subscribe(data => {
-        this.items = data.products;
-        this.items.forEach(item => {
-          this.itemsArray.push(item);
+        .subscribe(data => {
+          this.items = data.products;
+          this.items.forEach(item => {
+            this.itemsArray.push(item);
+          });
         });
-      });
     });
-    /*this.itemsArray.forEach(item =>{
-        this.items.push(item);
-    })*/
-    console.log(this.itemsArray);
-
   }
 
   onSelected(item: any) {
@@ -79,19 +74,33 @@ export class ContenidoComponent implements OnInit {
   filtrarPorCategoria() {
     if (this.categoriaSeleccionada !== null) {
       this.items = [];
-      this.itemService.getItemByCategory(this.categoriaSeleccionada).subscribe(resultado => {
-        this.items = resultado.products;
-      })
+      this.itemsArray = [];
+      this.itemService.API.forEach(url => {
+        this.itemService.getItemByCategory(url, this.categoriaSeleccionada)
+          .subscribe(data => {
+            this.items = data.products;
+            this.items.forEach(item => {
+              this.itemsArray.push(item);
+            });
+          });
+      });
     }
   }
 
-  /*filtrarPorMarca() {
+  filtrarPorMarca() {
     if (this.marcaSeleccionada !== null) {
       this.items = [];
-      this.itemService.getAll(this.marcaSeleccionada).subscribe(resultado => {
-        this.items = resultado.products;
+      this.itemsArray = [];
+      this.itemService.API.forEach(url => {
+        this.itemService.getAll(url, this.marcaSeleccionada)
+          .subscribe(data => {
+            this.items = data.products;
+            this.items.forEach(item => {
+              this.itemsArray.push(item);
+            });
+          });
       });
     }
-  }*/
+  }
 
 }
