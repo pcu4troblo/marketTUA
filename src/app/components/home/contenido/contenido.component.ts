@@ -32,8 +32,6 @@ export class ContenidoComponent implements OnInit {
   constructor(private itemService: ItemsService, private categoriaService: CategoriaService, private marcaService: MarcaService , private router: Router) { }
 
   ngOnInit() {
-    this.obtenerCategorias();
-    this.obtenerMarcas();
   }
     
   mostrar() {

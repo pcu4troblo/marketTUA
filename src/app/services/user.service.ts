@@ -12,10 +12,10 @@ export class UserService {
   public usuario : any = {};
 
   //Flask checkout
-  //public API = 'https://marketuaflask.herokuapp.com/checkout'
+  public API = 'https://marketuaflask.herokuapp.com/checkout/'
 
   //Go Checkout
-  public API = 'https://marketua-go-api.herokuapp.com/checkout'
+  //public API = 'https://marketua-go-api.herokuapp.com/checkout'
 
   //Flask getOrders
   public APIorders = 'https://marketuaflask.herokuapp.com/user'

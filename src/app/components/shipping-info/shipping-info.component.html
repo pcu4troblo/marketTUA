@@ -7,26 +7,17 @@
                 <form [formGroup]="shipping">
                     <div class="form-group">
                         <label>Dirección de entrega</label>
-                        <input type="text" formControlName="shipment_address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.shipment_address.errors }" />
-                        <div *ngIf="submitted && f.shipment_address.errors" class="invalid-feedback">
-                            <div *ngIf="f.shipment_address.errors.required">Por favor, ingresa tu dirección</div>
-                        </div>
+                        <input type="text" formControlName="shipment_address" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Nombre de Usuario</label>
-                        <input [disabled]=true class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.user_name.errors }"/>
-                        <div *ngIf="submitted && f.user_name.errors" class="invalid-feedback">
-                            <div *ngIf="f.user_name.errors.required">Por favor, ingresa el nombre de quien va a recibir el pedido</div>
-                        </div>
+                        <input class="form-control" formControlName="username" >
                     </div>
                     <div class="form-group">
                         <label for="payment_method"> Pago</label>
-                        <select class="form-control" formControlName="payment_method" [ngClass]="{ 'is-invalid': submitted && f.payment_method.errors }">
+                        <select class="form-control" formControlName="payment_method">
                             <option value="contraentrega">Pago Contraentrega</option>
                         </select>
-                        <div *ngIf="submitted && f.payment_method.errors" class="invalid-feedback">
-                            <div *ngIf="f.payment_method.errors.required">Por favor, Selecciona el pago</div>
-                        </div>
                     </div>
                 </form>
             </div>

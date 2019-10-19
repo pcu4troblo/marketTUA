@@ -31,38 +31,31 @@ export class ShippingInfoComponent implements OnInit {
     this.carrito = JSON.parse( localStorage.getItem("carrito"));
     this.carrito.forEach((item, index) =>{
       this.items[index] = {
-        Item_id : item.id,
-        Quantity: item.quantity,
-        Backend: "GO"
+        item_id : String(item.id),
+        quantity: String(item.quantity),
+        backend: "GO"
       }
     });
     this.shipping = this.formBuilder.group({
-      'shipment_address': ['', Validators.required, Validators.minLength(4)],
-      'username': ['', Validators.required, Validators.minLength(4)],
-      'payment_method': ['', Validators.required],
-      'items': [this.items, Validators.required],
-      'total': [+this.total, Validators.required]
+      'shipment_address': [''],
+      'username': [''],
+      'payment_method': [''],
+      'items': [this.items],
+      'total': [+this.total]
     });
   }
 
-  get f() { return this.shipping.controls; }
+  
 
-  checkout() {
-      console.log(this.shipping.value);
+
+
+  onSubmit() {
+    
+    console.log(this.shipping.value);
       this.userService.checkout(this.shipping.value).subscribe( resultado => {
         this.success = true;
         console.log(resultado);
       });
-    
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    if (this.shipping.invalid) {
-      return;
-    }
-    this.checkout();
-    console.log(this.shipping.value);
     
   }
 }
